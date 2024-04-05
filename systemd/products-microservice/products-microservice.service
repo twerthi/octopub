@@ -1,0 +1,15 @@
+[Unit]
+Description=Octopub Products Service
+After=syslog.target network.target
+
+[Service]
+SuccessExitStatus=143
+
+Type=simple
+
+WorkingDirectory=/opt/products-microservice
+ExecStart=java -jar products-microservice-runner.jar
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

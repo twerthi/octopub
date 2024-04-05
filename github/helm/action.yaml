@@ -1,0 +1,81 @@
+name: Helm Chart Build and Push
+description: Build the Java microservice
+inputs:
+  aws_access_key:
+    description: 'The aws access key'
+    required: true
+  aws_secret_access_key:
+    description: 'The aws secret access key'
+    required: true
+  chart_directory:
+    description: 'The directory holding the microservice'
+    required: true
+  octopus_url:
+    description: 'The octopus server'
+    required: true
+  octopus_apikey:
+    description: 'The octopus apikey'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Clone code repo
+      uses: actions/checkout@v2
+
+    - uses: chrisdickinson/setup-yq@latest
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.15
+      with:
+        versionSpec: 5.x
+
+    - id: determine_version
+      name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.15
+      with:
+        additionalArguments: /overrideconfig mode=Mainline
+
+    - name: Install Helm S3 plugin
+      run: helm plugin install https://github.com/hypnoglow/helm-s3.git
+      shell: bash
+
+    - name: Add the sales helm repo
+      env:
+        AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
+        AWS_DEFAULT_REGION: ap-southeast-2
+      run: helm repo add sales s3://octopus-sales-public-helm-repo/charts
+      shell: bash
+
+    - name: Update helm version
+      run: |
+        yq w -i Chart.yaml 'version' "${{ steps.determine_version.outputs.semVer }}"
+        yq w -i Chart.yaml 'appVersion' "${{ steps.determine_version.outputs.semVer }}"
+      shell: bash
+      working-directory: helm/${{ inputs.chart_directory }}
+
+    - name: Build helm chart
+      run: helm package .
+      shell: bash
+      working-directory: helm/${{ inputs.chart_directory }}
+
+    - name: Build helm chart
+      env:
+        AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
+        AWS_DEFAULT_REGION: ap-southeast-2
+      run: helm s3 push --relative --ignore-if-exists ./${{ inputs.chart_directory }}-${{ steps.determine_version.outputs.semVer }}.tgz sales
+      shell: bash
+      working-directory: helm/${{ inputs.chart_directory }}
+
+    - name: Push build information to Octopus Deploy 🐙
+      uses: OctopusDeploy/push-build-information-action@v3
+      env:
+        OCTOPUS_URL: ${{ inputs.octopus_url }}
+        OCTOPUS_API_KEY: ${{ inputs.octopus_apikey }}
+        OCTOPUS_SPACE: Matthew Casperson
+      with:
+        packages: ${{ inputs.chart_directory }}
+        version: ${{ steps.determine_version.outputs.semVer }}
+        overwrite_mode: OverwriteExisting

@@ -1,0 +1,8 @@
+*
+!wait-for-it.sh
+!target/*-runner
+!target/*-runner.jar
+!target/lib/*
+!target/quarkus-app/*
+!target/*.json
+!target/*.xml
