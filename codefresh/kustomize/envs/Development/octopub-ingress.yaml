@@ -1,3 +1,3 @@
 - op: replace
   path: /spec/rules/0/host
-  value: "octopub.development.octopusdemos.com"
+  value: "codefresh-octopub.development.octopusdemos.com"
