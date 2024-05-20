@@ -4,7 +4,7 @@ metadata:
   name: octopub-ingress
   annotations:
 spec:
-  ingressClassName: nginx
+#  ingressClassName: nginx
   rules:
   - host:
     http:
