@@ -4,8 +4,7 @@ metadata:
   name: octopub-ingress
   annotations:
 spec:
-#  ingressClassName: nginx
-  ingressClass: traefik-internal
+  ingressClassName: nginx
   rules:
   - host:
     http:
