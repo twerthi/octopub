@@ -23,7 +23,7 @@ jobs:
           run: |
             ls -la
             ls -la java/octopub-audit
-            docker build -f java/octopub-audit/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-audit-mysql:${{ env.PACKAGE_VERSION }} .
+            docker build -f java/octopub-audit/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }} .
             docker push twerthi/octopub-audit-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
           working-directory: java/octopub-audit
@@ -32,8 +32,8 @@ jobs:
           run: |
             ls -la
             ls -la java/octopub-productservice
-            docker build -f java/octopub-productservice/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-productservice-mysql:${{ env.PACKAGE_VERSION }} .
-            docker push twerthi/octopub-productservice-mysql:${{ env.PACKAGE_VERSION }}
+            docker build -f java/octopub-productservice/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }} .
+            docker push twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
           working-directory: java/octopub-productservice
 
@@ -41,7 +41,7 @@ jobs:
           run: |
               ls -la
               ls -la java/octopub-frontend
-              docker build -f java/octopub-frontend/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-frontend-mysql:${{ env.PACKAGE_VERSION }} .
-              docker push twerthi/octopub-frontend-mysql:${{ env.PACKAGE_VERSION }}
+              docker build -f java/octopub-frontend/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-frontend:${{ env.PACKAGE_VERSION }} .
+              docker push twerthi/octopub-frontend:${{ env.PACKAGE_VERSION }}
           shell: bash
           working-directory: java/octopub-frontend
