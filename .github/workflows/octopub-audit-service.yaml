@@ -1,0 +1,47 @@
+name: Docker Build and Push
+
+on:
+    workflow_dispatch:
+
+jobs:
+  build:
+    name: Build, tag, and push audit image to Dockerhub
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v3
+        - name: Set Version
+          run: echo "PACKAGE_VERSION=$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
+
+        - name: docker login
+          uses: docker/login-action@v2
+          with:
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
+  
+        - name: build audit service
+          run: |
+            ls -la
+            ls -la java/octopub-audit
+            docker build -f java/octopub-audit/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-audit-mysql:${{ env.PACKAGE_VERSION }} .
+            docker push twerthi/octopub-audit-mysql:${{ env.PACKAGE_VERSION }}
+          shell: bash
+          working-directory: java/octopub-audit
+
+        - name: build product service
+          run: |
+            ls -la
+            ls -la java/octopub-productservice
+            docker build -f java/octopub-productservice/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-productservice-mysql:${{ env.PACKAGE_VERSION }} .
+            docker push twerthi/octopub-productservice-mysql:${{ env.PACKAGE_VERSION }}
+          shell: bash
+          working-directory: java/octopub-productservice
+
+        - name: build frontend
+          run: |
+              ls -la
+              ls -la java/octopub-frontend
+              docker build -f java/octopub-frontend/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-frontend-mysql:${{ env.PACKAGE_VERSION }} .
+              docker push twerthi/octopub-frontend-mysql:${{ env.PACKAGE_VERSION }}
+          shell: bash
+          working-directory: java/octopub-frontend
