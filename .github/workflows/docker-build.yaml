@@ -29,7 +29,7 @@ jobs:
         - name: build product service
           run: |
             ls -la
-            docker build -f java/octopub-productservice/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }} .
+            docker build -f /Dockerfile.legacy-jar -t twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }} .
             docker push twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
           working-directory: java/products-microservice/src/main/docker
@@ -38,7 +38,7 @@ jobs:
           run: |
               ls -la
               ls -la java/octopub-frontend
-              docker build -f java/octopub-frontend/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-frontend:${{ env.PACKAGE_VERSION }} .
+              docker build -f Dockerfile -t twerthi/octopub-frontend:${{ env.PACKAGE_VERSION }} .
               docker push twerthi/octopub-frontend:${{ env.PACKAGE_VERSION }}
           shell: bash
-          working-directory: java/octopub-frontend
+          working-directory: js/frontend
