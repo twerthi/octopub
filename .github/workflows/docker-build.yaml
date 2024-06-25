@@ -30,7 +30,6 @@ jobs:
         - name: build product service
           run: |
             ls -la
-            ls -la java/products-microservice
             docker build -f java/octopub-productservice/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }} .
             docker push twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
