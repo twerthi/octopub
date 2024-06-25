@@ -104,7 +104,7 @@ runs:
         CF_GIT_BRANCH: ${{ github.ref_name }}
 
         # Image path to enrich 
-        CF_IMAGE: ${{ inputs.dockerhub_username }}/octopub-$frontend::${{ steps.determine_version.outputs.semVer }}
+        CF_IMAGE: ${{ inputs.dockerhub_username }}/octopub-frontend::${{ steps.determine_version.outputs.semVer }}
 
         # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
         # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
