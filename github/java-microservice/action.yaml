@@ -279,7 +279,9 @@ runs:
 
     # Build the self-contained H2 backed version of the app.
     - name: Build with Maven
-      run: ./mvnw --batch-mode package --file pom.xml -DskipTests
+      run: |
+        chmod +x ./mvnw
+        ./mvnw --batch-mode package --file pom.xml -DskipTests
       shell: bash
       working-directory: java/${{ inputs.service_directory }}
 
@@ -321,8 +323,8 @@ runs:
         ls -la target
         docker build -f src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }} .
         docker push twerthi/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }}
-        # docker tag  octopussamples/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }} octopussamples/octopub-${{ inputs.service_directory }}:latest
-        # docker push octopussamples/octopub-${{ inputs.service_directory }}:latest
+#        docker tag  octopussamples/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }} octopussamples/octopub-${{ inputs.service_directory }}:latest
+#        docker push octopussamples/octopub-${{ inputs.service_directory }}:latest
       shell: bash
       working-directory: java/${{ inputs.service_directory }}
 
