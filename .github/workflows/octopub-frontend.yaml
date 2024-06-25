@@ -19,3 +19,5 @@ jobs:
           run_number: ${{ github.run_number }}
           dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
+          github_codefresh_token: ${{ secrets.CF_GITHUB_TOKEN }}
+          codefresh_token: ${{ secrets.USER_TOKEN }}
