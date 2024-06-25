@@ -48,7 +48,7 @@ ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jb
 COPY target/*-runner.jar /deployments/app.jar
 
 # Copy the SBOM
-COPY target/bom.json /bom.json
+#COPY target/bom.json /bom.json
 
 EXPOSE 8080
 USER 1001
