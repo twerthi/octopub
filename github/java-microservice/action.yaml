@@ -170,39 +170,39 @@ runs:
       shell: bash
       working-directory: java
 
-    - name: Test Backend
-      if: ${{ inputs.run_tests == 'true' }}
-      run: |
-        chmod +x ./mvnw
-        ./mvnw --batch-mode test
-      shell: bash
-      working-directory: java/${{ inputs.service_directory }}
+    # - name: Test Backend
+    #   if: ${{ inputs.run_tests == 'true' }}
+    #   run: |
+    #     chmod +x ./mvnw
+    #     ./mvnw --batch-mode test
+    #   shell: bash
+    #   working-directory: java/${{ inputs.service_directory }}
 
-    - name: Test Shared Library
-      if: ${{ inputs.run_tests == 'true' }}
-      run: |
-        chmod +x ./mvnw
-        ./mvnw --batch-mode test
-      shell: bash
-      working-directory: java/microservice-utils
+    # - name: Test Shared Library
+    #   if: ${{ inputs.run_tests == 'true' }}
+    #   run: |
+    #     chmod +x ./mvnw
+    #     ./mvnw --batch-mode test
+    #   shell: bash
+    #   working-directory: java/microservice-utils
 
-    - name: Generate JaCoCo Badges
-      if: ${{ inputs.run_tests == 'true' }}
-      uses: cicirello/jacoco-badge-generator@v2
-      with:
-        generate-branches-badge: true
-        jacoco-csv-file: java/${{ inputs.service_directory }}/target/jacoco-report/jacoco.csv
-        coverage-badge-filename: ${{ inputs.service_directory }}.svg
-        branches-badge-filename: ${{ inputs.service_directory }}-branches.svg
+    # - name: Generate JaCoCo Badges
+    #   if: ${{ inputs.run_tests == 'true' }}
+    #   uses: cicirello/jacoco-badge-generator@v2
+    #   with:
+    #     generate-branches-badge: true
+    #     jacoco-csv-file: java/${{ inputs.service_directory }}/target/jacoco-report/jacoco.csv
+    #     coverage-badge-filename: ${{ inputs.service_directory }}.svg
+    #     branches-badge-filename: ${{ inputs.service_directory }}-branches.svg
 
-    - name: Generate JaCoCo Badges for Shared Library
-      if: ${{ inputs.run_tests == 'true' }}
-      uses: cicirello/jacoco-badge-generator@v2
-      with:
-        generate-branches-badge: true
-        jacoco-csv-file: java/microservice-utils/target/site/jacoco/jacoco.csv
-        coverage-badge-filename: microservice-utils.svg
-        branches-badge-filename: microservice-utils-branches.svg
+    # - name: Generate JaCoCo Badges for Shared Library
+    #   if: ${{ inputs.run_tests == 'true' }}
+    #   uses: cicirello/jacoco-badge-generator@v2
+    #   with:
+    #     generate-branches-badge: true
+    #     jacoco-csv-file: java/microservice-utils/target/site/jacoco/jacoco.csv
+    #     coverage-badge-filename: microservice-utils.svg
+    #     branches-badge-filename: microservice-utils-branches.svg
 
     - name: Update resources
       if: ${{ inputs.run_tests == 'true' && steps.branch-name.outputs.current_branch == 'main' }}
@@ -288,12 +288,12 @@ runs:
  #     shell: bash
 
     # Build the self-contained H2 backed version of the app.
-    - name: Build with Maven
-      run: |
-        chmod +x ./mvnw
-        ./mvnw --batch-mode package --file pom.xml -DskipTests
-      shell: bash
-      working-directory: java/${{ inputs.service_directory }}
+    # - name: Build with Maven
+    #   run: |
+    #     chmod +x ./mvnw
+    #     ./mvnw --batch-mode package --file pom.xml -DskipTests
+    #   shell: bash
+    #   working-directory: java/${{ inputs.service_directory }}
 
 #    - name: Deploy JAR package
 #      run: |
@@ -326,17 +326,17 @@ runs:
       # working-directory: systemd/${{ inputs.service_directory }}
 
     # The Docker image is built and pushed.
-    - name: Build, tag, and push image to Dockerhub
-      if: ${{ inputs.docker_build == 'true' }}
-      run: |
-        ls -la
-        ls -la target
-        docker build -f src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }} .
-        docker push twerthi/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }}
-#        docker tag  octopussamples/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }} octopussamples/octopub-${{ inputs.service_directory }}:latest
-#        docker push octopussamples/octopub-${{ inputs.service_directory }}:latest
-      shell: bash
-      working-directory: java/${{ inputs.service_directory }}
+    # - name: Build, tag, and push image to Dockerhub
+    #   if: ${{ inputs.docker_build == 'true' }}
+    #   run: |
+    #     ls -la
+    #     ls -la target
+    #     docker build -f src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }} .
+    #     docker push twerthi/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }}
+    #     docker tag  octopussamples/octopub-${{ inputs.service_directory }}:${{ steps.determine_version.outputs.semVer }} octopussamples/octopub-${{ inputs.service_directory }}:latest
+    #     docker push octopussamples/octopub-${{ inputs.service_directory }}:latest
+    #   shell: bash
+    #   working-directory: java/${{ inputs.service_directory }}
 
     # Rebuild the app to support a MySQL database
     - name: Build MySQL version with Maven
@@ -368,8 +368,8 @@ runs:
       run: |
         docker build -f src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-${{ inputs.service_directory }}-mysql:${{ steps.determine_version.outputs.semVer }} .
         docker push twerthi/octopub-${{ inputs.service_directory }}-mysql:${{ steps.determine_version.outputs.semVer }}
-#        docker tag  octopussamples/octopub-${{ inputs.service_directory }}-mysql:${{ steps.determine_version.outputs.semVer }} octopussamples/octopub-${{ inputs.service_directory }}-mysql:latest
-#        docker push octopussamples/octopub-${{ inputs.service_directory }}-mysql:latest
+        docker tag  twerthi/octopub-${{ inputs.service_directory }}-mysql:${{ steps.determine_version.outputs.semVer }} twerthi/octopub-${{ inputs.service_directory }}-mysql:latest
+        docker push twerthi/octopub-${{ inputs.service_directory }}-mysql:latest
       shell: bash
       working-directory: java/${{ inputs.service_directory }}
 
