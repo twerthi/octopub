@@ -18,15 +18,19 @@ jobs:
           with:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
-  
-        - name: build audit service
+        - name: build audit service docker jar
+          run: |
+            ./mvnw --batch-mode package --file pom.xml -DskipTests -Dquarkus.profile=mysql
+          shell: bash
+          working-directory: java/audit-microservice
+        - name: build audit service docker image
           run: |
             docker build -f Dockerfile.legacy-jar -t twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }} .
             docker push twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
           working-directory: java/audit-microservice/src/main/docker
 
-        - name: build product service
+        - name: build product service docker image
           run: |
             ls -la
             docker build -f /Dockerfile.legacy-jar -t twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }} .
@@ -34,7 +38,7 @@ jobs:
           shell: bash
           working-directory: java/products-microservice/src/main/docker
 
-        - name: build frontend
+        - name: build frontend docker image
           run: |
               ls -la
               ls -la java/octopub-frontend
