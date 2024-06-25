@@ -20,8 +20,8 @@ jobs:
             password: ${{ secrets.DOCKER_PASSWORD }}
         - name: build audit service docker jar
           run: |
-            chmod +x mvnw
-            mvnw --batch-mode package --file pom.xml -DskipTests -Dquarkus.profile=mysql
+            chmod +x ./mvnw
+            ./mvnw --batch-mode package --file pom.xml -DskipTests -Dquarkus.profile=mysql
           shell: bash
           working-directory: java/audit-microservice
         - name: build audit service docker image
