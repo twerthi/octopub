@@ -43,6 +43,12 @@ inputs:
     description: 'Whether to run tests'
     required: true
     default: true
+  codefresh_token:
+    description: 'The codefresh token'
+    required: true
+  github_codefresh_token:
+    description: 'The github codefresh token'
+    required: true
 
 runs:
   using: "composite"
@@ -148,7 +154,7 @@ runs:
 
         # Codefresh API key !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
         # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
-        CF_API_KEY: ${{ secrets.USER_TOKEN }}
+        CF_API_KEY: ${{ inputs.codefresh_token }}
 
         # Name of Container registry integration
         CF_CONTAINER_REGISTRY_INTEGRATION: 'docker'
@@ -161,7 +167,7 @@ runs:
 
         # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
         # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
-        CF_GITHUB_TOKEN: ${{ secrets.CF_GITHUB_TOKEN }}    
+        CF_GITHUB_TOKEN: ${{ inputs.github_codefresh_token }}    
 
         # # Name of Jira integration
         # CF_ISSUE_TRACKING_INTEGRATION: 'jira' 

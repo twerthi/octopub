@@ -22,3 +22,5 @@ jobs:
           dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
           service_directory: audit-microservice
+          github_codefresh_token: ${{ secrets.CF_GITHUB_TOKEN }}
+          codefresh_token: ${{ secrets.USER_TOKEN }}
