@@ -18,6 +18,13 @@ jobs:
           with:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
+        - name: build microservice utils docker jar
+          run: |
+            chmod +x ./mvnw
+            ./mvnw --batch-mode package --file pom.xml -DskipTests
+          shell: bash
+          working-directory: java/microservice-utils
+
         - name: build audit service docker jar
           run: |
             chmod +x ./mvnw
