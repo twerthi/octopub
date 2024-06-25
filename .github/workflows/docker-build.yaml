@@ -22,11 +22,10 @@ jobs:
         - name: build audit service
           run: |
             ls -la
-            ls -la java/audit-microservice
             docker build -f java/octopub-audit/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }} .
             docker push twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
-          working-directory: java/audit-microservice
+          working-directory: java/audit-microservice/src/main/docker
 
         - name: build product service
           run: |
@@ -35,7 +34,7 @@ jobs:
             docker build -f java/octopub-productservice/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }} .
             docker push twerthi/octopub-products-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
-          working-directory: java/products-microservice 
+          working-directory: java/products-microservice/src/main/docker
 
         - name: build frontend
           run: |
