@@ -10,6 +10,12 @@ inputs:
   dockerhub_password:
     description: 'The dockerhub password'
     required: true
+  codefresh_token:
+    description: 'The codefresh token'
+    required: true
+  github_codefresh_token:
+    description: 'The github codefresh token'
+    required: true    
 
 runs:
   using: "composite"
