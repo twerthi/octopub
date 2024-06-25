@@ -24,7 +24,7 @@ jobs:
             ls -la
             ls -la java/octopub-audit
             docker build -f java/octopub-audit/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }} .
-            docker push twerthi/octopub-audit-mysql:${{ env.PACKAGE_VERSION }}
+            docker push twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
           working-directory: java/octopub-audit
 
