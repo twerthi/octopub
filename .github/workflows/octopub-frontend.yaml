@@ -1,4 +1,4 @@
-name: Build Products
+name: Build Frotnend
 permissions:
   contents: write
   packages: write
