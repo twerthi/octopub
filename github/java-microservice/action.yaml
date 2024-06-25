@@ -157,7 +157,7 @@ runs:
         CF_API_KEY: ${{ inputs.codefresh_token }}
 
         # Name of Container registry integration
-        CF_CONTAINER_REGISTRY_INTEGRATION: 'docker'
+        CF_CONTAINER_REGISTRY_INTEGRATION: 'twerthi-dockerhub'
 
         # The git branch which is related for the commit
         CF_GIT_BRANCH: ${{ github.ref_name }}
