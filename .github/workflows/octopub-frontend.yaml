@@ -1,0 +1,21 @@
+name: Build Products
+permissions:
+  contents: write
+  packages: write
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Build Javascript Frontend
+        uses: ./github/js-frontend
+        with:
+          run_number: ${{ github.run_number }}
+          dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
+          dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
