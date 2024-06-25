@@ -157,7 +157,9 @@ runs:
       shell: bash
 
     - name: Checkstyle
-      run: ./mvnw --batch-mode checkstyle:check
+      run: |
+        chmod +x ./mvnw
+        ./mvnw --batch-mode checkstyle:check
       shell: bash
       working-directory: java
 
