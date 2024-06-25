@@ -164,19 +164,25 @@ runs:
       working-directory: java
 
     - name: Install modules
-      run: ./mvnw --batch-mode install -DskipTests
+      run: |
+        chmod +x ./mvnw
+        ./mvnw --batch-mode install -DskipTests
       shell: bash
       working-directory: java
 
     - name: Test Backend
       if: ${{ inputs.run_tests == 'true' }}
-      run: ./mvnw --batch-mode test
+      run: |
+        chmod +x ./mvnw
+        ./mvnw --batch-mode test
       shell: bash
       working-directory: java/${{ inputs.service_directory }}
 
     - name: Test Shared Library
       if: ${{ inputs.run_tests == 'true' }}
-      run: ./mvnw --batch-mode test
+      run: |
+        chmod +x ./mvnw
+        ./mvnw --batch-mode test
       shell: bash
       working-directory: java/microservice-utils
 
@@ -211,7 +217,9 @@ runs:
     # This step generates a Source Bill of Materials (SBOM) package that captures all the dependencies compiled
     # into the application.
     - name: Generate SBOM
-      run: ./mvnw cyclonedx:makeAggregateBom -DskipTests --no-transfer-progress --batch-mode
+      run: |
+        chmod +x ./mvnw
+        ./mvnw cyclonedx:makeAggregateBom -DskipTests --no-transfer-progress --batch-mode
       shell: bash
       working-directory: java
 
@@ -332,7 +340,9 @@ runs:
 
     # Rebuild the app to support a MySQL database
     - name: Build MySQL version with Maven
-      run: ./mvnw --batch-mode package --file pom.xml -DskipTests -Dquarkus.profile=mysql
+      run: |
+        chmod +x ./mvnw
+        ./mvnw --batch-mode package --file pom.xml -DskipTests -Dquarkus.profile=mysql
       shell: bash
       working-directory: java/${{ inputs.service_directory }}
 
