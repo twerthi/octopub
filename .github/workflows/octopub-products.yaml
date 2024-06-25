@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build Audit Microservice
+      - name: Build Product Microservice
         uses: ./github/java-microservice
         with:
           run_number: ${{ github.run_number }}
@@ -21,4 +21,4 @@ jobs:
           github_token: ${{ github.token }}
           dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
-          service_directory: audit-microservice
+          service_directory: products-microservice
