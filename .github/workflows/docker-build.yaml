@@ -21,7 +21,6 @@ jobs:
   
         - name: build audit service
           run: |
-            ls -la
             docker build -f java/octopub-audit/src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }} .
             docker push twerthi/octopub-audit-microservice-mysql:${{ env.PACKAGE_VERSION }}
           shell: bash
