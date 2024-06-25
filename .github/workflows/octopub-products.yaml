@@ -1,4 +1,4 @@
-name: Build Audits
+name: Build Products
 permissions:
   contents: write
   packages: write
