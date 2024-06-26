@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: twerthi/octopub-frontend:0.1.64
+          image: twerthi/octopub-frontend:0.1.68
           ports:
             - containerPort: 8080
               name: http-port
