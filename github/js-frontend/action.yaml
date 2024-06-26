@@ -117,11 +117,13 @@ runs:
         CF_GITHUB_TOKEN: ${{ inputs.github_codefresh_token }}    
 
         # # Name of Jira integration
-        # CF_ISSUE_TRACKING_INTEGRATION: 'jira' 
+        # # Name of Jira integration
+        CF_ISSUE_TRACKING_INTEGRATION: 'jira-shawn-sesna' 
 
         # # String starting with the issue ID to associate with image
-        # CF_JIRA_MESSAGE: 'CR-11027'
+        CF_JIRA_MESSAGE: 'OC-1'
 
         # # Jira project filter
-        # CF_JIRA_PROJECT_PREFIX: "CR"
+        CF_JIRA_PROJECT_PREFIX: "OC"
+
       uses: codefresh-io/codefresh-report-image@latest          
