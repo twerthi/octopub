@@ -39,3 +39,14 @@ configMapGenerator:
   - name: service-env-vars
     behavior: merge
     env: variables.properties
+
+images:
+  - name: octopussamples/octopub-audit-microservice-mysql
+    newName: twerthi/octopub-audit-microservice-mysql
+    newTag: 0.1.96
+  - name: octopussamples/octopub-products-microservice-mysql
+    newName: twerthi/octopub-products-microservice-mysql
+    newTag: 0.1.96
+  - name: octopussamples/octopub-frontend
+    newName: twerthi/octopub-frontend
+    newTag: 0.1.96
