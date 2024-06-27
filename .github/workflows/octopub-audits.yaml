@@ -28,6 +28,3 @@ jobs:
           service_directory: audit-microservice
           github_codefresh_token: ${{ secrets.CF_GITHUB_TOKEN }}
           codefresh_token: ${{ secrets.USER_TOKEN }}
-          octopus_server_url: ${{ secrets.OCTOPUS_SERVER_URL }}
-          octopus_api_key: ${{ secrets.OCTOPUS_API_KEY }}
-          octopus_space: ${{ secrets.OCTOPUS_SPACE }}

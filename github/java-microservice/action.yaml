@@ -49,15 +49,6 @@ inputs:
   github_codefresh_token:
     description: 'The github codefresh token'
     required: true
-  octopus_server_url:
-    description: 'The octopus server url'
-    required: true
-  octopus_api_key:
-    description: 'The octopus api key'
-    required: true
-  octopus_space:
-    description: 'The octopus space'
-    required: true    
 
 runs:
   using: "composite"
