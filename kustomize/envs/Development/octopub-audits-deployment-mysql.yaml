@@ -2,6 +2,6 @@
   path: /spec/template/spec/containers/0/ports/0/containerPort
   value: #{Project.Service.Audit.ContainerPort}
 
-- op: replace
-  path: /spec/template/spec/containers/0/image
-  value: #{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageId}:#{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageVersion}
+#- op: replace
+#  path: /spec/template/spec/containers/0/image
+#  value: #{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageId}:#{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageVersion}
