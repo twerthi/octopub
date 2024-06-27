@@ -49,7 +49,6 @@ runs:
       uses: gittools/actions/gitversion/execute@v0.9.15
       with:
         additionalArguments: /overrideconfig mode=Mainline
-
     - name: Install modules
       run: yarn install
       shell: bash
