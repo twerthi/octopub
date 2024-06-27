@@ -8,10 +8,6 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    env:
-      OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER_URL }} # address of Octopus Deploy instance (i.e. https://demo.octopus.app)
-      OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY }} # API key used with Octopus Deploy instance
-      OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE }} # or you can specify a Space ID    
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,3 +24,6 @@ jobs:
           service_directory: audit-microservice
           github_codefresh_token: ${{ secrets.CF_GITHUB_TOKEN }}
           codefresh_token: ${{ secrets.USER_TOKEN }}
+          octopus_server_url: ${{ secrets.OCTOPUS_SERVER_URL }}
+          octopus_api_key: ${{ secrets.OCTOPUS_API_KEY }}
+          octopus_space: ${{ secrets.OCTOPUS_SPACE }}
