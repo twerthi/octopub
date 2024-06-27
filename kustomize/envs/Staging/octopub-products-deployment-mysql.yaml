@@ -1,3 +1,7 @@
 - op: replace
   path: /spec/template/spec/containers/0/ports/0/containerPort
   value: #{Project.Service.Product.ContainerPort}
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: #{Octopus.Action.Package[octopub-products-microservice-mysql].PackageId}:#{Octopus.Action.Package[octopub-products-microservice-mysql].PackageVersion}
