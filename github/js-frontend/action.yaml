@@ -127,7 +127,8 @@ runs:
         CF_JIRA_PROJECT_PREFIX: "OC"
 
       uses: codefresh-io/codefresh-report-image@latest
-   - name: Push build information to Octopus Deploy 🐙
+
+    - name: Push build information to Octopus Deploy 🐙
       uses: OctopusDeploy/push-build-information-action@v3
       with:
         packages: |
