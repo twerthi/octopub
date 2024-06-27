@@ -61,10 +61,7 @@ inputs:
 
 runs:
   using: "composite"
-  env:
-    OCTOPUS_URL: ${{ inputs.octopus_server_url }} # address of Octopus Deploy instance (i.e. https://demo.octopus.app)
-    OCTOPUS_API_KEY: ${{ inputs.octopus_server_url }} # API key used with Octopus Deploy instance
-    OCTOPUS_SPACE: ${{ inputs.octopus_server_url }} # or you can specify a Space ID
+
   steps:
     - name: Clone code repo
       uses: actions/checkout@v2
