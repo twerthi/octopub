@@ -45,7 +45,7 @@ images:
     newName: twerthi/octopub-audit-microservice-mysql
     newTag: 0.1.96
   - name: octopussamples/octopub-products-microservice-mysql
-    newName: twerthi/octopub-products-microservice-mysql
+    newName: octopussamples/octopub-products-microservice-mysql
     newTag: 0.2.36-add-multi-arch.18
   - name: octopussamples/octopub-frontend
     newName: twerthi/octopub-frontend
