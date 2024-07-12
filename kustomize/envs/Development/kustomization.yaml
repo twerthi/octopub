@@ -47,11 +47,11 @@ configMapGenerator:
 
 images:
   - name: octopussamples/octopub-audit-microservice-mysql
-    newName: ghcr.io/#{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageId}
+    newName: #{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageId}
     newTag: #{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageVersion}
   - name: octopussamples/octopub-products-microservice-mysql
-    newName: ghcr.io/#{Octopus.Action.Package[octopub-products-microservice-mysql].PackageId}
+    newName: #{Octopus.Action.Package[octopub-products-microservice-mysql].PackageId}
     newTag: #{Octopus.Action.Package[octopub-products-microservice-mysql].PackageVersion}
   - name: octopussamples/octopub-frontend
-    newName: ghcr.io/#{Octopus.Action.Package[octopub-frontend].PackageId}
+    newName: #{Octopus.Action.Package[octopub-frontend].PackageId}
     newTag: #{Octopus.Action.Package[octopub-frontend].PackageVersion}
