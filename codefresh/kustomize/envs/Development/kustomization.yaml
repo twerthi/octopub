@@ -49,4 +49,4 @@ images:
     newTag: 0.1.96
   - name: octopussamples/octopub-frontend
     newName: twerthi/octopub-frontend
-    newTag: 0.1.96
+    newTag: 0.1.108
