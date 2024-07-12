@@ -27,8 +27,8 @@ spec:
     spec:
       containers:
         - name: productservice
-          #image: octopussamples/octopub-products-microservice-mysql
-          image: ghcr.io/octopussolutionsengineering/octopub-products-microservice-mysql
+          image: octopussamples/octopub-products-microservice-mysql
+          #image: ghcr.io/octopussolutionsengineering/octopub-products-microservice-mysql
           ports:
             - name: http-product
               containerPort: 8083
