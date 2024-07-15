@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: octopub-ingress
 spec:
-#  ingressClassName: nginx
+  ingressClassName: #nginx
   rules:
   - host: ""
     http:
