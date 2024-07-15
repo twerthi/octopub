@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: octopub-ingress
+  name: octopub-ingress 
 spec:
-  ingressClassName: #nginx
+  ingressClassName: nginx
   rules:
   - host: ""
     http:
