@@ -51,7 +51,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: clusterIP
+  type: ClusterIP
   port: 10000
   annotations:
     # https://stackoverflow.com/a/76247614/8246539
