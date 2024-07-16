@@ -11,11 +11,11 @@ image:
   tag: ""
 
 database:
-  hostname: localhost
-  port: 3306
-  name: product
-  username: root
-  password: password
+  hostname: 192.168.1.64
+  port: 30001
+  name: octopub_codefresh_test
+#  username: root
+#  password: password
   migrateOnStartup: true
 
 application:
@@ -51,8 +51,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
-  port: 80
+  type: ClusterIP
+  port: 10000
   annotations:
     # https://stackoverflow.com/a/76247614/8246539
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
@@ -60,13 +60,13 @@ service:
     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 
 ingress:
-  enabled: false
-  className: ""
+  enabled: true
+#  className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host:
+    - host: octopub-clusterpi.test.octopusdemos.com
       paths:
         - path: /api/audits
           pathType: Prefix
