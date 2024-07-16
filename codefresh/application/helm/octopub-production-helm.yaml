@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: octopub-production
+  annotations:
+    codefresh.io/product: octopub
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/twerthi/octopub.git
+      targetRevision: HEAD
+      path: codefresh/helm/octopub-audits-mysql/production
+    - repoURL: https://github.com/twerthi/octopub.git
+      targetRevision: HEAD
+      path: codefresh/helm/octopub-products-mysql/production
+    - repoURL: https://github.com/twerthi/octopub.git
+      targetRevision: HEAD
+      path: codefresh/helm/octopub-frontend/production
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+  syncPolicy:
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true
