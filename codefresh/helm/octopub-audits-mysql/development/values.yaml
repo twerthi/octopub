@@ -11,11 +11,11 @@ image:
   tag: ""
 
 database:
-  hostname: localhost
-  port: 3306
-  name: product
-  username: root
-  password: password
+  hostname: 192.168.1.64
+  port: 30000
+  name: octopub_codefresh_development
+#  username: root
+#  password: password
   migrateOnStartup: true
 
 application:
