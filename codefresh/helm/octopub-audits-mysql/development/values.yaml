@@ -50,14 +50,14 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-# service:
-#   type: LoadBalancer
-#   port: 80
-#   annotations:
-#     # https://stackoverflow.com/a/76247614/8246539
-#     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
-#     service.beta.kubernetes.io/aws-load-balancer-type: external
-#     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+service:
+  type: clusterIP
+  port: 10000
+  annotations:
+    # https://stackoverflow.com/a/76247614/8246539
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 
 ingress:
   enabled: true
