@@ -1,22 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: octopub-production
   annotations:
     codefresh.io/product: octopub
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/twerthi/octopub.git
-    targetRevision: HEAD
-    path: codefresh/kustomize/envs/Production
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: production
-  syncPolicy:
-    automated: 
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - Validate=false
-    - CreateNamespace=true
+  generators:
+  - list:
+       elements:
+       - cluster: in-cluster
+         url: https://kubernetes.default.svc 
+       - cluster: k3s
+         url: https://k3s1:6443
+  template:
+    metadata:
+      name: '{{cluster}}-octopub-production'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/twerthi/octopub.git
+        targetRevision: HEAD
+        path: codefresh/kustomize/envs/Production
+      destination:
+        server: '{{url}}'
+        namespace: production
+      syncPolicy:
+        automated: 
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - Validate=false
+        - CreateNamespace=true
