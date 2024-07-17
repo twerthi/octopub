@@ -68,7 +68,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: octopub-clusterpi.development.octopusdemos.com
+    - host: octopub-clusterpi.test.octopusdemos.com
       paths:
       - path: /
         pathType: Prefix
