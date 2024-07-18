@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: production
 resources:
 - ../../base
-- sealed-secret.yaml
+#- sealed-secret.yaml
 
 patches:
   - target:

@@ -17,10 +17,13 @@ spec:
       name: '{{cluster}}-octopub-test'
     spec:
       project: default
-      source:
-        repoURL: https://github.com/twerthi/octopub.git
-        targetRevision: HEAD
-        path: codefresh/kustomize/envs/Test
+      sources:
+        - repoURL: https://github.com/twerthi/octopub.git
+          targetRevision: HEAD
+          path: codefresh/kustomize/envs/Test
+        - repoURL: https://github.com/twerthi/octopub.git
+          targetRevision: HEAD
+          path: codefresh/kustomize/octopub-secret/{{cluster}}/test
       destination:
         server: '{{url}}'
         namespace: test
