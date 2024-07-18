@@ -15,7 +15,10 @@ spec:
       path: codefresh/helm/octopub-products-mysql/development
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
-      path: codefresh/helm/octopub-frontend/development    
+      path: codefresh/helm/octopub-frontend/development
+    - repoURL: https://github.com/twerthi/octopub.git
+      targetRevision: HEAD
+      path: codefresh/helm/octopub-secret/development          
   destination:
     server: https://kubernetes.default.svc
     namespace: development

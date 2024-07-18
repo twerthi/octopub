@@ -15,7 +15,10 @@ spec:
       path: codefresh/helm/octopub-products-mysql/test
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
-      path: codefresh/helm/octopub-frontend/test    
+      path: codefresh/helm/octopub-frontend/test
+    - repoURL: https://github.com/twerthi/octopub.git
+      targetRevision: HEAD
+      path: codefresh/helm/octopub-secret/test          
   destination:
     server: https://kubernetes.default.svc
     namespace: test
