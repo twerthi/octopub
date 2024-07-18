@@ -21,7 +21,7 @@ spec:
       path: codefresh/helm/octopub-secret/development          
   destination:
     server: https://kubernetes.default.svc
-    namespace: development
+    namespace: cf-development
   syncPolicy:
 #    automated: 
 #      prune: true

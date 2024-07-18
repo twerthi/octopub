@@ -21,7 +21,7 @@ spec:
       path: codefresh/helm/octopub-secret/test          
   destination:
     server: https://kubernetes.default.svc
-    namespace: test
+    namespace: cf-test
   syncPolicy:
     syncOptions:
     - Validate=false

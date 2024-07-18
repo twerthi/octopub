@@ -21,7 +21,7 @@ spec:
       path: codefresh/helm/octopub-secret/production      
   destination:
     server: https://kubernetes.default.svc
-    namespace: production
+    namespace: cf-production
   syncPolicy:
     syncOptions:
     - Validate=false
