@@ -10,7 +10,7 @@ spec:
        elements:
        - cluster: in-cluster
          url: https://kubernetes.default.svc 
-       - cluster: k3s
+       - cluster: k3s1
          url: https://k3s1:6443
   template:
     metadata:
