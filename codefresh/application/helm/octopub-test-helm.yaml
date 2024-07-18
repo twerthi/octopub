@@ -18,7 +18,7 @@ spec:
       path: codefresh/helm/octopub-frontend/test
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
-      path: codefresh/helm/octopub-secret/test          
+      path: codefresh/helm/octopub-secret/Test          
   destination:
     server: https://kubernetes.default.svc
     namespace: cf-test

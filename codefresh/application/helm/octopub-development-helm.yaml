@@ -18,12 +18,12 @@ spec:
       path: codefresh/helm/octopub-frontend/development
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
-      path: codefresh/helm/octopub-secret/development          
+      path: codefresh/helm/octopub-secret/Development          
   destination:
     server: https://kubernetes.default.svc
     namespace: cf-development
   syncPolicy:
-    automated: 
+    automated:  
       prune: true
       selfHeal: true
     syncOptions:
