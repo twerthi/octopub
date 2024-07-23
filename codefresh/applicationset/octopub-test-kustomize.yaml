@@ -2,8 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: octopub-test
-  annotations:
-    codefresh.io/product: octopub
 spec:
   generators:
   - list:
