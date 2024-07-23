@@ -2,8 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: octopub-development
-  annotations:
-    codefresh.io/product: octopub
 spec:
   generators:
   - list:
@@ -15,6 +13,8 @@ spec:
   template:
     metadata:
       name: '{{cluster}}-octopub-development'
+      annotations:
+        codefresh.io/product: octopub
     spec:
       project: default
       sources:
