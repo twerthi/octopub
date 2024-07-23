@@ -180,7 +180,7 @@ runs:
         CF_GITHUB_TOKEN: ${{ inputs.github_codefresh_token }}    
 
         # # Name of Jira integration
-        CF_ISSUE_TRACKING_INTEGRATION: 'jira-shawn-sesna' 
+        CF_ISSUE_TRACKING_INTEGRATION: 'twerthi-jira' 
 
         # # String starting with the issue ID to associate with image
         CF_JIRA_MESSAGE: 'OC-1'
