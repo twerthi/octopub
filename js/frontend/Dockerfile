@@ -1,7 +1,9 @@
 FROM node as build
 WORKDIR /usr/src/app
 COPY package.json ./
-RUN yarn install
+#RUN yarn install
+# Suggested fix from https://github.com/nodejs/docker-node/issues/1335 for ARM64
+RUN yarn config set network-timeout 300000 && yarn install
 COPY . .
 RUN yarn build
 RUN npm install --global @cyclonedx/cyclonedx-npm
