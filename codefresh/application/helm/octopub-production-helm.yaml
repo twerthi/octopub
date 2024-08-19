@@ -9,10 +9,10 @@ spec:
   sources:
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
-      path: codefresh/helm/octopub-audits-mysql/production
+      path: codefresh/helm/octopub-products-mysql/production
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
-      path: codefresh/helm/octopub-products-mysql/production
+      path: codefresh/helm/octopub-audits-mysql/production
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
       path: codefresh/helm/octopub-frontend/production
