@@ -86,21 +86,21 @@ runs:
       working-directory: js/frontend
 
     # The Docker image is built and pushed.
-    - name: Build, tag, and push image to Dockerhub
-      run: |
-        docker build -t twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }} .
-        docker push twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }}
-        docker tag  twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }} twerthi/octopub-frontend:latest
-        docker push twerthi/octopub-frontend:latest
-      shell: bash
-      working-directory: js/frontend
+ #   - name: Build, tag, and push image to Dockerhub
+ #     run: |
+ #       docker build -t twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }} .
+ #       docker push twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }}
+ #       docker tag  twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }} twerthi/octopub-frontend:latest
+ #       docker push twerthi/octopub-frontend:latest
+ #     shell: bash
+ #     working-directory: js/frontend
 
     # The MySQL Docker image is built and pushed.
-    # - name: Build, tag, and push image to Dockerhub
-    #   run: |
-    #     docker buildx build -f Dockerfile -t twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }} -t twerthi/octopub-frontend:latest --platform=linux/amd64,linux/arm64 --push .
-    #   shell: bash
-    #   working-directory: js/frontend
+    - name: Build, tag, and push image to Dockerhub
+      run: |
+        docker buildx build -f Dockerfile -t twerthi/octopub-frontend:${{ steps.determine_version.outputs.semVer }} -t twerthi/octopub-frontend:latest --platform=linux/amd64,linux/arm64 --push .
+      shell: bash
+      working-directory: js/frontend
 
     - name: Install Cypress modules
       run: npm install
