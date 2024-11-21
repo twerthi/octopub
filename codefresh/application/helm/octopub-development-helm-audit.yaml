@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: octopub-development
+  name: octopub-audit-development
   annotations:
     codefresh.io/product: octopub
 spec:
@@ -10,12 +10,6 @@ spec:
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
       path: codefresh/helm/octopub-audits-mysql/development
-    - repoURL: https://github.com/twerthi/octopub.git
-      targetRevision: HEAD
-      path: codefresh/helm/octopub-products-mysql/development
-    - repoURL: https://github.com/twerthi/octopub.git
-      targetRevision: HEAD
-      path: codefresh/helm/octopub-frontend/development
     - repoURL: https://github.com/twerthi/octopub.git
       targetRevision: HEAD
       path: codefresh/helm/octopub-secret/Development          
