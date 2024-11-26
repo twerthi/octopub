@@ -17,4 +17,4 @@ spec:
           image: octopussamples/octopub-frontend
           ports:
             - containerPort: 8080
-              name: http-port
+              name: #{TestVar}
