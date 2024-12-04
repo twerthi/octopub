@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: octopub-frontend-production
   annotations:
-    codefresh.io/product: octopub
+    codefresh.io/product: octopub-frontend
 spec:
   project: default
   sources:

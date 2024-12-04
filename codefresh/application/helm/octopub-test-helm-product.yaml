@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: octopub-product-test
   annotations:
-    codefresh.io/product: octopub
+    codefresh.io/product: octopub-product
 spec:
   project: default
   sources:
