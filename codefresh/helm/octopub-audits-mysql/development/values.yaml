@@ -17,6 +17,7 @@ database:
 #  username: root
 #  password: password
   migrateOnStartup: true
+  
 
 application:
   disableAuth: true
