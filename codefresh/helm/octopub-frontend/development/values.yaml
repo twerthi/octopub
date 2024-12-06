@@ -26,7 +26,6 @@ image:
 network:
   port: 8080
   
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

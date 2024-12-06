@@ -18,7 +18,6 @@ database:
 #  password: password
   migrateOnStartup: true
   
-
 application:
   disableAuth: true
 

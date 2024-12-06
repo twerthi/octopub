@@ -21,7 +21,6 @@ database:
 network:
   port: 8083
   
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
