@@ -8,7 +8,7 @@ image:
   repository: octopussamples/octopub-products-microservice-mysql
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "2024.11.25.373"
+  tag: "2024.11.26.377"
 
 database:
   hostname: 192.168.1.64
