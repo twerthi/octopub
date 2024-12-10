@@ -11,7 +11,7 @@ image:
   tag: ""
 
 database:
-  hostname: localhost
+  hostname: #{Project.Replicas.Count}
   port: 3306
   name: product
   username: root
@@ -88,7 +88,7 @@ resources: {}
   #   memory: 128Mi
 
 autoscaling:
-  enabled: #{Project.Replicas.Count}
+  enabled: false
   minReplicas: 1
   maxReplicas: 1
   targetCPUUtilizationPercentage: 80
