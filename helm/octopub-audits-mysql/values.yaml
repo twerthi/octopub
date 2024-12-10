@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: #{Project.Replica.Count}
+replicaCount: 1
 
 image:
   repository: octopussamples/octopub-audit-microservice-mysql
@@ -88,7 +88,7 @@ resources: {}
   #   memory: 128Mi
 
 autoscaling:
-  enabled: false
+  enabled: #{Project.Replica.Count}
   minReplicas: 1
   maxReplicas: 1
   targetCPUUtilizationPercentage: 80
