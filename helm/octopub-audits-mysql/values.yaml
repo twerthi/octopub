@@ -11,7 +11,7 @@ image:
   tag: ""
 
 database:
-  hostname: #{Project.Replicas.Count}hi
+  hostname: localhost
   port: 3306
   name: product
   username: root
