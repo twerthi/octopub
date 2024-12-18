@@ -108,10 +108,10 @@ runs:
       shell: bash
       working-directory: js/frontend
 
-    - name: Install Cypress modules
-      run: npm install
-      shell: bash
-      working-directory: js/cypress-frontend
+    # - name: Install Cypress modules
+    #   run: npm install
+    #   shell: bash
+    #   working-directory: js/cypress-frontend
 
     - name: report image by action
       with:
