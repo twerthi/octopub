@@ -72,11 +72,6 @@ runs:
       run: npm install --global @cyclonedx/cyclonedx-npm
       shell: bash
 
-    # Install react-helmet
-    - name: Install react-helmet
-      run: npm install react-helmet
-      shell: bash
-
     # This step generates a Source Bill of Materials (SBOM) package that captures all the dependencies compiled
     # into the application.
     - name: Generate SBOM
