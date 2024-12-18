@@ -5,7 +5,8 @@ COPY package.json ./
 # Suggested fix from https://github.com/nodejs/docker-node/issues/1335 for ARM64
 RUN yarn config set network-timeout 300000 && yarn install
 COPY . .
-RUN npm install --save @types/react-helmet
+#RUN npm install --save @types/react-helmet
+RUN yarn add --dev @types/react-helmet
 RUN yarn build
 RUN npm install --global @cyclonedx/cyclonedx-npm
 RUN cyclonedx-npm --ignore-npm-errors --output-file /bom.json
