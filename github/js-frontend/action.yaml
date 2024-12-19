@@ -79,20 +79,12 @@ runs:
       shell: bash
       working-directory: js/frontend
 
-    # - name: Set version
-    #   run: |
-    #     jq '.frontendVersion = "v${{ env.PACKAGE_VERSION }}"' config.json > /tmp/config.json
-    #     mv /tmp/config.json config.json
-    #   shell: bash
-    #   working-directory: js/frontend/public
-
     - name: Set version
       run: |
-        jq '.frontendVersion = "v1.1.1"' config.json > /tmp/config.json
+        jq '.frontendVersion = "v${{ env.PACKAGE_VERSION }}"' config.json > /tmp/config.json
         mv /tmp/config.json config.json
       shell: bash
       working-directory: js/frontend/public
-
 
     - name: Build App
       run: yarn run build
