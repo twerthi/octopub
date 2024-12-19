@@ -58,7 +58,7 @@ runs:
     #   with:
     #     additionalArguments: /overrideconfig mode=Mainline
 
-    - name: Set Version
+    - name: Set Package Version
       run: echo "PACKAGE_VERSION=$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
       shell: bash
 
@@ -79,12 +79,12 @@ runs:
       shell: bash
       working-directory: js/frontend
 
-    # - name: Set version
-    #   run: |
-    #     jq '.frontendVersion = "v${{ steps.determine_version.outputs.semVer }}"' config.json > /tmp/config.json
-    #     mv /tmp/config.json config.json
-    #   shell: bash
-    #   working-directory: js/frontend/public
+    - name: Set version
+      run: |
+        jq '.frontendVersion = "v${{ steps.determine_version.outputs.semVer }}"' config.json > /tmp/config.json
+        mv /tmp/config.json config.json
+      shell: bash
+      working-directory: js/frontend/public
 
     - name: Build App
       run: yarn run build
