@@ -81,7 +81,7 @@ runs:
 
     - name: Set version
       run: |
-        jq '.frontendVersion = "v${{ steps.determine_version.outputs.semVer }}"' config.json > /tmp/config.json
+        jq '.frontendVersion = "v${{ env.PACKAGE_VERSION }}"' config.json > /tmp/config.json
         mv /tmp/config.json config.json
       shell: bash
       working-directory: js/frontend/public
