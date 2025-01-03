@@ -13,7 +13,7 @@ image:
 database:
   hostname: 192.168.1.64
   port: 30000
-  name: octopub_codefresh_development
+  name: octopub_codefresh_production
 #  username: root
 #  password: password
   migrateOnStartup: true
@@ -63,7 +63,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host:  octopub-clusterpi.development.octopusdemos.com
+    - host:  octopub-clusterpi.octopusdemos.com
       paths:
         - path: /api/products
           pathType: Prefix
