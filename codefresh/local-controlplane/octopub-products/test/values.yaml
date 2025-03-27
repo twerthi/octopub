@@ -11,11 +11,6 @@ image:
   tag: 20250213.393.1
 
 database:
-  hostname: 192.168.1.64
-  port: 30001
-  name: octopub_codefresh_test
-  #  username: root
-  #  password: password
   migrateOnStartup: true
 
 network:
