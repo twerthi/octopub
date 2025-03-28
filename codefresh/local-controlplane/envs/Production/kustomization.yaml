@@ -7,26 +7,6 @@ resources:
 
 patches:
   - target:
-      kind: Deployment
-      name: octopub-audit-deployment
-    path: octopub-audits-deployment-mysql.yaml
-  - target:
-      kind: Service
-      name: octopub-audit-cluster-ip
-    path: octopub-audits-service-mysql.yaml
-  - target: 
-      kind: Ingress
-      name: octopub-ingress
-    path: octopub-ingress.yaml
-  - target:
-      kind: Service
-      name: octopub-products-deployment
-    path: octopub-products-deployment-mysql.yaml
-  - target:
-      kind: Deployment
-      name: octopub-products-service
-    path: octopub-products-service-mysql.yaml
-  - target:
       kind: Service
       name: octopub-frontend-cluster-ip
     path: octopub-frontend-service.yaml
@@ -41,12 +21,6 @@ configMapGenerator:
     env: variables.properties
 
 images:
-  - name: octopussamples/octopub-audit-microservice-mysql
-    newName: twerthi/octopub-audit-microservice-mysql
-    newTag: 0.1.92
-  - name: octopussamples/octopub-products-microservice-mysql
-    newName: twerthi/octopub-products-microservice-mysql
-    newTag: 0.1.92
   - name: octopussamples/octopub-frontend
     newName: twerthi/octopub-frontend
     newTag: 0.1.71
