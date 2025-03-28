@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: production
+namespace: development
 resources:
 - ../../base
-#- sealed-secret.yaml
+#- sealed-secret.yaml 
 
 patches:
   - target:
@@ -22,5 +22,5 @@ configMapGenerator:
 
 images:
   - name: octopussamples/octopub-frontend
-    newName: twerthi/octopub-frontend
-    newTag: 0.1.71
+    newName: octopussamples/octopub-frontend
+    newTag: 20250121.387.1
