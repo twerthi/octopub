@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: development
 resources:
 - ../../base
-#- sealed-secret.yaml
+#- sealed-secret.yaml 
 
 patches:
   - target:
@@ -23,4 +23,4 @@ configMapGenerator:
 images:
   - name: octopussamples/octopub-frontend
     newName: octopussamples/octopub-frontend
-    newTag: 20250213.393.1
+    newTag: 20250121.387.1
