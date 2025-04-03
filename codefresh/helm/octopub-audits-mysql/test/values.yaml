@@ -8,7 +8,7 @@ image:
   repository: twerthi/octopub-audit-microservice-mysql
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 2024.12.18.34
+  tag: 2025.04.02.38
 
 database:
   hostname: 192.168.1.64
