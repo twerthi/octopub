@@ -21,7 +21,7 @@ image:
   repository: twerthi/octopub-frontend
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "2024.12.23.40"
+  tag: "2025.04.02.43"
 
 network:
   port: 8080
