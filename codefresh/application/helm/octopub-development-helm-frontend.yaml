@@ -6,10 +6,10 @@ metadata:
     codefresh.io/product: octopub-frontend
 spec:
   project: default
-  sources:
-    - repoURL: https://github.com/twerthi/octopub.git
-      targetRevision: HEAD
-      path: codefresh/helm/octopub-frontend/development
+  source:
+     repoURL: https://github.com/twerthi/octopub.git
+     targetRevision: HEAD
+     path: codefresh/helm/octopub-frontend/development
   destination:
     server: https://kubernetes.default.svc
     namespace: cf-development

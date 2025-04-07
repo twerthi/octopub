@@ -6,13 +6,10 @@ metadata:
     codefresh.io/product: octopub-audit
 spec:
   project: default
-  sources:
-    - repoURL: https://github.com/twerthi/octopub.git
-      targetRevision: HEAD
-      path: codefresh/helm/octopub-audits-mysql/test
-    - repoURL: https://github.com/twerthi/octopub.git
-      targetRevision: HEAD
-      path: codefresh/helm/octopub-secret/Test          
+  source:
+    repoURL: https://github.com/twerthi/octopub.git
+    targetRevision: HEAD
+    path: codefresh/helm/octopub-audits-mysql/test
   destination:
     server: https://kubernetes.default.svc
     namespace: cf-test
