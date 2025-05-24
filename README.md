@@ -1,7 +1,7 @@
 Octopub is a sample application designed to be deployed to a variety of platforms such as AWS Lambda, Kubernetes, and
 static web hosting. It also builds a number of test worker images, test scripts, and security packages.
 
-## Maven feed
+## Maven feed 
 
 A number of packages including SBOM packages and Lambda artifacts, are pushed to a public Maven repo hosted at
 https://octopus-sales-public-maven-repo.s3.ap-southeast-2.amazonaws.com/snapshot.
