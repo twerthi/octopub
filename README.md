@@ -1,7 +1,7 @@
 Octopub is a sample application designed to be deployed to a variety of platforms such as AWS Lambda, Kubernetes, and
 static web hosting. It also builds a number of test worker images, test scripts, and security packages.
 
-## Maven feed
+## Maven feedgit
 
 A number of packages including SBOM packages and Lambda artifacts, are pushed to a public Maven repo hosted at
 https://octopus-sales-public-maven-repo.s3.ap-southeast-2.amazonaws.com/snapshot.
@@ -14,7 +14,7 @@ https://octopus-sales-public-maven-repo.s3.ap-southeast-2.amazonaws.com/snapshot
 * `com.octopus:products-microservice-jar` - The product microservice uber jar
 * `com.octopus:products-microservice-systemd` - The product microservice systemd service file
 * `com.octopus:products-microservice-mysql-jar` - The product microservice uber jar with MySQL
-* `com.octopus:products-microservice-liquidbase` - The product microservice Liquidbase database migration scripts. The changelog file is called `changeLog.xml`.
+* `com.octopus:products-microservice-liquibase` - The product microservice Liquidbase database migration scripts. The changelog file is called `changeLog.xml`.
 * `com.octopus:products-microservice-sbom` - The product microservice SBOM
 * `com.octopus:audit-microservice-lambda` - The audit microservice AWS Lambda
 * `com.octopus:audit-microservice-jar` - The audit microservice uber jar
