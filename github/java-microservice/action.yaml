@@ -191,7 +191,8 @@ runs:
         CF_CONTAINER_REGISTRY_INTEGRATION: 'twerthi-dockerhub'
 
         # The git branch which is related for the commit
-        CF_GIT_BRANCH: ${{ github.ref_name }}
+        #CF_GIT_BRANCH: ${{ github.ref_name }}
+        CF_GIT_BRANCH: "test-pr"
 
         # Image path to enrich 
         CF_IMAGE: docker.io/${{ inputs.dockerhub_username }}/octopub-${{ inputs.service_directory }}-mysql:${{ env.PACKAGE_VERSION }}
