@@ -163,7 +163,7 @@ runs:
     - name: Build, tag, and push image to Dockerhub
       if: ${{ inputs.docker_build == 'true' }}
       run: |
-        docker buildx build -f src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-${{ inputs.service_directory }}-mysql:${{ env.PACKAGE_VERSION }} -t twerthi/octopub-${{ inputs.service_directory }}-mysql:latest --platform=linux/arm64 --push .
+        docker buildx build -f src/main/docker/Dockerfile.legacy-jar -t twerthi/octopub-${{ inputs.service_directory }}-mysql:${{ env.PACKAGE_VERSION }} -t twerthi/octopub-${{ inputs.service_directory }}-mysql:latest --platform=linux/amd64,linux/arm64 --push .
       shell: bash
       working-directory: java/${{ inputs.service_directory }}
 

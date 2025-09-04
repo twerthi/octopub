@@ -104,7 +104,7 @@ runs:
     # The MySQL Docker image is built and pushed.
     - name: Build, tag, and push image to Dockerhub
       run: |
-        docker buildx build -f Dockerfile -t twerthi/octopub-frontend:${{ env.PACKAGE_VERSION }} -t twerthi/octopub-frontend:latest --platform=linux/arm64 --push .
+        docker buildx build -f Dockerfile -t twerthi/octopub-frontend:${{ env.PACKAGE_VERSION }} -t twerthi/octopub-frontend:latest --platform=linux/amd64,linux/arm64 --push .
       shell: bash
       working-directory: js/frontend
 
