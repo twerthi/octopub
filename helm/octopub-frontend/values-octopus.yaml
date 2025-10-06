@@ -1,4 +1,3 @@
-replicaCount: #{Project.Helm.ReplicaCount}
 image:
   repository: #{Octopus.Action.Package[octopub-frontend].PackageId}
   tag: #{Octopus.Action.Package[octopub-frontend].PackageVersion}
