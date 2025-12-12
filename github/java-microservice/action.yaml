@@ -1,5 +1,5 @@
 name: Docker Build and Push
-description: Build the Java microservice
+description: Build the Java microservice 
 inputs:
   run_number:
     required: true
