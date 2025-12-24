@@ -7,7 +7,7 @@ spec:
     - name: http-gw
       namespace: argocd
   hostnames:
-    - clusterpi-octopub.development.octopusdemos.app     # to be replaced with your EXTERNAL-IP of LoadBalancer resource
+    - clusterpi-octopub.test.octopusdemos.app     # to be replaced with your EXTERNAL-IP of LoadBalancer resource
   rules:
   - matches:
     - path:
