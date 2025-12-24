@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auditservice
-          image: octopussamples/octopub-audit-microservice-mysql
+          image: #{Octopus.Action.Package[octopub-audit-microservice-mysql].Registry}/#{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageId}:#{Octopus.Action.Package[octopub-audit-microservice-mysql].PackageVersion}
           ports:
             - name: http-audit
               containerPort: 10000
@@ -29,7 +29,7 @@ spec:
             - name: DATABASE_PORT
               value: "#{MySQL.Server.Port}"
             - name: DATABASE_NAME
-              value: "octopub_#{Octopus.Environment.Name}"
+              value: "octopub_clusterpi_#{Octopus.Environment.Name}"
             - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: octopussamples/octopub-frontend
+          image: #{Octopus.Action.Package[octopub-frontend].Registry}/#{Octopus.Action.Package[octopub-frontend].PackageId}:#{Octopus.Action.Package[octopub-frontend].PackageVersion}
           ports:
             - containerPort: 8080
               name: frontend
