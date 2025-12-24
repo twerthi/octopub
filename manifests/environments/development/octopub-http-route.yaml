@@ -5,6 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: http-gw
+      namespace: argocd
   hostnames:
     - clusterpi-octopub.octopusdemos.app     # to be replaced with your EXTERNAL-IP of LoadBalancer resource
   rules:
