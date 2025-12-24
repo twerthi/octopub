@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: octopub-test-update-manifests-demo
+  namespace: argocd
+  annotations:
+    argo.octopus.com/project: "update-manifests-demo"
+    argo.octopus.com/environment: "test"  
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/twerthi/octopub.git
+    targetRevision: HEAD
+    path: manifests/environments/test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test-update-manifests-demo
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true
