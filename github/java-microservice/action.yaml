@@ -178,38 +178,38 @@ runs:
     #   shell: bash
     #   working-directory: java/${{ inputs.service_directory }}
 
-    - name: report image by action
-      with:
-        # Name of runtime to implement the enrichment
-        CF_RUNTIME_NAME: 'codefresh-local-k3s'
+    # - name: report image by action
+    #   with:
+    #     # Name of runtime to implement the enrichment
+    #     CF_RUNTIME_NAME: 'codefresh-local-k3s'
 
-        # Codefresh API key !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
-        # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
-        CF_API_KEY: ${{ inputs.codefresh_token }}
+    #     # Codefresh API key !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
+    #     # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
+    #     CF_API_KEY: ${{ inputs.codefresh_token }}
 
-        # Name of Container registry integration
-        CF_CONTAINER_REGISTRY_INTEGRATION: 'twerthi-dockerhub'
+    #     # Name of Container registry integration
+    #     CF_CONTAINER_REGISTRY_INTEGRATION: 'twerthi-dockerhub'
 
-        # The git branch which is related for the commit
-        #CF_GIT_BRANCH: ${{ github.ref_name }}
-        CF_GIT_BRANCH: "test-pr"
+    #     # The git branch which is related for the commit
+    #     #CF_GIT_BRANCH: ${{ github.ref_name }}
+    #     CF_GIT_BRANCH: "test-pr"
 
-        # Image path to enrich 
-        CF_IMAGE: docker.io/${{ inputs.dockerhub_username }}/octopub-${{ inputs.service_directory }}-mysql:${{ env.PACKAGE_VERSION }}
+    #     # Image path to enrich 
+    #     CF_IMAGE: docker.io/${{ inputs.dockerhub_username }}/octopub-${{ inputs.service_directory }}-mysql:${{ env.PACKAGE_VERSION }}
 
-        # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
-        # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
-        CF_GITHUB_TOKEN: ${{ inputs.github_codefresh_token }}    
+    #     # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
+    #     # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
+    #     CF_GITHUB_TOKEN: ${{ inputs.github_codefresh_token }}    
 
-        # # Name of Jira integration
-        CF_ISSUE_TRACKING_INTEGRATION: 'twerthi-jira' 
+    #     # # Name of Jira integration
+    #     CF_ISSUE_TRACKING_INTEGRATION: 'twerthi-jira' 
 
-        # # String starting with the issue ID to associate with image
-        CF_JIRA_MESSAGE: 'OC-1'
+    #     # # String starting with the issue ID to associate with image
+    #     CF_JIRA_MESSAGE: 'OC-1'
 
-        # # Jira project filter
-        CF_JIRA_PROJECT_PREFIX: "OC"
-      uses: codefresh-io/codefresh-report-image@latest
+    #     # # Jira project filter
+    #     CF_JIRA_PROJECT_PREFIX: "OC"
+    #   uses: codefresh-io/codefresh-report-image@latest
 
     # - name: Push build information to Octopus Deploy 🐙
     #   uses: OctopusDeploy/push-build-information-action@v3
