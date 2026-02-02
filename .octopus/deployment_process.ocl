@@ -1,0 +1,242 @@
+step "get-database-password" {
+    name = "Get database password"
+
+    action {
+        properties = {
+            Octopus.Action.Template.Id = "ActionTemplates-5241"
+            Octopus.Action.Template.Version = "9"
+            Vault.Retrieve.KV.V2.Secrets.ApiVersion = "v1"
+            Vault.Retrieve.KV.V2.Secrets.AuthToken = "#{HashiCorp.Vault.Auth.Token}"
+            Vault.Retrieve.KV.V2.Secrets.FieldValues = "SA_PASSWORD | SA_PASSWORD"
+            Vault.Retrieve.KV.V2.Secrets.PrintVariableNames = "True"
+            Vault.Retrieve.KV.V2.Secrets.RecursiveSearch = "False"
+            Vault.Retrieve.KV.V2.Secrets.RetrievalMethod = "Get"
+            Vault.Retrieve.KV.V2.Secrets.SecretsPath = "/secret/mysqlserver"
+            Vault.Retrieve.KV.V2.Secrets.VaultAddress = "#{HashiCorp.Vault.Server.Url}"
+        }
+        worker_pool = "linux-worker-pool"
+    }
+}
+
+step "create-namespace-if-not-exists" {
+    name = "Create namespace if not exists"
+    properties = {
+        Octopus.Action.TargetRoles = "Octopub-Frontend"
+    }
+    start_trigger = "StartWithPrevious"
+
+    action {
+        action_type = "Octopus.KubernetesRunScript"
+        properties = {
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                # Set varaibles
+                $clusterNamespace = "#{Octopus.Environment.Name | ToLower}"
+                
+                # Get existing namespaces
+                Write-Host "Retrieving namespaces ..."
+                $namespaces = (kubectl get namespaces -o JSON | ConvertFrom-Json)
+                
+                # Check to see if namespace exists
+                if ($null -eq ($namespaces.Items | Where-Object {$_.metadata.name -eq $clusterNamespace}))
+                {
+                	# Create the namespace
+                    Write-Host "Namespace $clusetrNamespace doesn't exist, creating ..."
+                    kubectl create namespace $clusterNamespace
+                }
+                else
+                {
+                	Write-Host "Namespace $clusterNamespace already exists, moving on ..."
+                }
+                EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool_variable = ""
+    }
+}
+
+step "notify-business-owners-of-pending-approval" {
+    name = "Notify Business Owners Of Pending Approval"
+
+    action {
+        action_type = "Octopus.Email"
+        environments = ["production"]
+        properties = {
+            Octopus.Action.Email.Body = <<-EOT
+                Please login and approve #{Octopus.Project.Name} #{Octopus.Release.Number} to #{Octopus.Environment.Name}
+                
+                #{Octopus.Web.ServerUri}/app#/#{Octopus.Space.Id}/tasks/#{Octopus.Task.Id}
+                EOT
+            Octopus.Action.Email.Subject = "Pending Approval for #{Octopus.Project.Name} #{Octopus.Release.Number} to #{Octopus.Environment.Name}"
+            Octopus.Action.Email.ToTeamIds = "global/octopus-managers"
+        }
+    }
+}
+
+step "business-owners-approve-deployment" {
+    name = "Business Owners Approve Deployment"
+
+    action {
+        action_type = "Octopus.Manual"
+        environments = ["production"]
+        properties = {
+            Octopus.Action.Manual.BlockConcurrentDeployments = "False"
+            Octopus.Action.Manual.Instructions = "Please approve deployment to #{Octopus.Environment.Name}"
+            Octopus.Action.Manual.ResponsibleTeamIds = "global/octopus-managers"
+        }
+    }
+}
+
+step "mysql-create-database-if-not-exists" {
+    name = "MySQL - Create Database If Not Exists"
+
+    action {
+        properties = {
+            createDatabaseName = "#{Project.Database.Name}"
+            createMySQLServerName = "#{MySQL.Server.Name}"
+            createPort = "#{MySQL.Server.Port}"
+            createUsername = "#{MySQL.Database.Admin.Username}"
+            createUserPassword = "#{Octopus.Action[Get database password].Output.SA_PASSWORD}"
+            createUseSSL = "False"
+            mysqlAdditionalParameters = "AllowPublicKeyRetrieval=True"
+            mySqlAuthenticationMethod = "usernamepassword"
+            Octopus.Action.Template.Id = "ActionTemplates-555"
+            Octopus.Action.Template.Version = "9"
+        }
+        worker_pool = "database-worker-pool"
+    }
+}
+
+step "flyway-database-migrations" {
+    name = "Flyway Database Migrations"
+
+    action {
+        properties = {
+            Flyway.Authentication.Method = "usernamepassword"
+            Flyway.Command.BaseLineOnMigrate = "false"
+            Flyway.Command.FailOnDrift = "true"
+            Flyway.Command.OutOfOrder = "false"
+            Flyway.Command.SkipExecutingMigrations = "false"
+            Flyway.Command.Target = "latest"
+            Flyway.Command.Value = "migrate"
+            Flyway.Database.User = "#{MySQL.Database.Admin.Username}"
+            Flyway.Database.User.Password = "#{MySQL.Database.Admin.Password}"
+            Flyway.Package.Value = "{\"PackageId\":\"octopub.mysql.flyway\",\"FeedId\":\"octopus-server-built-in\"}"
+            Flyway.PersonalAccessToken = ""
+            Flyway.Target.Url = "#{Project.Database.ConnectionString}"
+            Octopus.Action.Template.Id = "ActionTemplates-2201"
+            Octopus.Action.Template.Version = "15"
+        }
+        worker_pool = "linux-worker-pool"
+
+        container {
+            feed = "docker-hub"
+            image = "octopuslabs/flyway-workertools"
+        }
+
+        packages "Flyway.Package.Value" {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "octopub.mysql.flyway"
+            properties = {
+                Extract = "True"
+                PackageParameterName = "Flyway.Package.Value"
+                SelectionMode = "deferred"
+            }
+        }
+    }
+}
+
+step "kustomize" {
+    name = "Kustomize"
+    package_requirement = "AfterPackageAcquisition"
+    properties = {
+        Octopus.Action.TargetRoles = "Octopub-Frontend"
+    }
+
+    action {
+        action_type = "Octopus.Kubernetes.Kustomize"
+        properties = {
+            Octopus.Action.GitRepository.Source = "External"
+            Octopus.Action.Kubernetes.DeploymentTimeout = "180"
+            Octopus.Action.Kubernetes.Kustomize.OverlayPath = "kustomize/envs/#{Octopus.Environment.Name}"
+            Octopus.Action.Kubernetes.ResourceStatusCheck = "True"
+            Octopus.Action.Kubernetes.ServerSideApply.Enabled = "False"
+            Octopus.Action.Kubernetes.ServerSideApply.ForceConflicts = "False"
+            Octopus.Action.Kubernetes.WaitForJobs = "False"
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+            Octopus.Action.SubstituteInFiles.TargetFiles = <<-EOT
+                kustomize/envs/#{Octopus.Environment.Name}/secrets.properties
+                kustomize/envs/#{Octopus.Environment.Name}/variables.properties
+                kustomize/envs/#{Octopus.Environment.Name}/kustomization.yaml
+                kustomize/envs/#{Octopus.Environment.Name}/octopub-audits-deployment-mysql.yaml
+                kustomize/envs/#{Octopus.Environment.Name}/octopub-audits-service-mysql.yaml
+                kustomize/envs/#{Octopus.Environment.Name}/octopub-ingress.yaml
+                kustomize/envs/#{Octopus.Environment.Name}/octopub-products-deployment-mysql.yaml
+                kustomize/envs/#{Octopus.Environment.Name}/octopub-products-service-mysql.yaml
+                kustomize/envs/#{Octopus.Environment.Name}/octopub-frontend-service.yaml
+                kustomize/envs/#{Octopus.Environment.Name}/octopub-frontend-deployment.yaml
+                EOT
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "kubernetes-worker-pool"
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-21"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/twerthi/Octopub.git"
+        }
+
+        packages "octopub-products-microservice-mysql" {
+            acquisition_location = "NotAcquired"
+            feed = "docker-hub"
+            package_id = "octopussamples/octopub-products-microservice-mysql"
+            properties = {
+                Extract = "False"
+                Purpose = "DockerImageReference"
+                SelectionMode = "immediate"
+            }
+        }
+
+        packages "octopub-frontend" {
+            acquisition_location = "NotAcquired"
+            feed = "docker-hub"
+            package_id = "octopussamples/octopub-frontend"
+            properties = {
+                Extract = "False"
+                Purpose = "DockerImageReference"
+                SelectionMode = "immediate"
+            }
+        }
+
+        packages "octopub-audit-microservice-mysql" {
+            acquisition_location = "NotAcquired"
+            feed = "docker-hub"
+            package_id = "octopussamples/octopub-audit-microservice-mysql"
+            properties = {
+                Extract = "False"
+                Purpose = "DockerImageReference"
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "email-team-of-status-always-run" {
+    condition = "Always"
+    name = "Email Team of Status (Always Run)"
+
+    action {
+        action_type = "Octopus.Email"
+        properties = {
+            Octopus.Action.Email.Body = <<-EOT
+                Deployment of #{Octopus.Project.Name}, version #{Octopus.Release.Number} #{Octopus.Project.Name} to #{Octopus.Environment.Name} #{if Octopus.Deployment.Error}Failed!#{else}Succeeded#{/if}
+                
+                #{if Octopus.Deployment.Error}#{Octopus.Deployment.ErrorDetail}#{/if}
+                EOT
+            Octopus.Action.Email.Subject = "Deployment of #{Octopus.Project.Name} #{if Octopus.Deployment.Error}Failed!#{else}Succeeded#{/if}"
+            Octopus.Action.Email.ToTeamIds = "global/octopus-managers"
+        }
+    }
+}
