@@ -10,4 +10,22 @@ run_retention_policy {
     quantity_to_keep = 100
 }
 
-process {}
+process {
+    step "delete-branch-namespace" {
+        name = "Delete branch namespace"
+        properties = {
+            Octopus.Action.TargetRoles = "Octopub-Audit"
+        }
+
+        action {
+            action_type = "Octopus.KubernetesRunScript"
+            properties = {
+                Octopus.Action.Script.ScriptBody = "write-host \"Hello\""
+                Octopus.Action.Script.ScriptSource = "Inline"
+                Octopus.Action.Script.Syntax = "PowerShell"
+            }
+            worker_pool = "default-worker-pool"
+            worker_pool_variable = ""
+        }
+    }
+}
