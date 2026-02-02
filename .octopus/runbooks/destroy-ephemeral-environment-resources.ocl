@@ -20,12 +20,30 @@ process {
         action {
             action_type = "Octopus.KubernetesRunScript"
             properties = {
-                Octopus.Action.Script.ScriptBody = "write-host \"Hello\""
+                Octopus.Action.Script.ScriptBody = <<-EOT
+                    # Set varaibles
+                    $clusterNamespace = "#{Octopus.RunbookRun.Git.BranchName | ToLower}"
+                    
+                    # Get existing namespaces
+                    Write-Host "Retrieving namespaces ..."
+                    $namespaces = (kubectl get namespaces -o JSON | ConvertFrom-Json)
+                    
+                    # Check to see if namespace exists
+                    if ($null -ne ($namespaces.Items | Where-Object {$_.metadata.name -eq $clusterNamespace}))
+                    {
+                    	# Create the namespace
+                        Write-Host "Deleting namespace $clusterNamespace ..."
+                        kubectl delete namespace $clusterNamespace
+                    }
+                    else
+                    {
+                    	Write-Host "Namespace $clusterNamespace doesn't exists, moving on ..."
+                    }
+                    EOT
                 Octopus.Action.Script.ScriptSource = "Inline"
                 Octopus.Action.Script.Syntax = "PowerShell"
             }
-            worker_pool = "default-worker-pool"
-            worker_pool_variable = ""
+            worker_pool = "container-worker-pool"
         }
     }
 }
