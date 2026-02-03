@@ -28,6 +28,7 @@ step "create-namespace-if-not-exists" {
     action {
         action_type = "Octopus.KubernetesRunScript"
         properties = {
+            Octopus.Action.RunOnServer = "false"
             Octopus.Action.Script.ScriptBody = <<-EOT
                 # Set varaibles
                 $clusterNamespace = "#{Octopus.Environment.Name | ToLower}"
@@ -69,6 +70,7 @@ step "notify-business-owners-of-pending-approval" {
                 EOT
             Octopus.Action.Email.Subject = "Pending Approval for #{Octopus.Project.Name} #{Octopus.Release.Number} to #{Octopus.Environment.Name}"
             Octopus.Action.Email.ToTeamIds = "global/octopus-managers"
+            Octopus.Action.RunOnServer = "false"
         }
     }
 }
@@ -83,6 +85,7 @@ step "business-owners-approve-deployment" {
             Octopus.Action.Manual.BlockConcurrentDeployments = "False"
             Octopus.Action.Manual.Instructions = "Please approve deployment to #{Octopus.Environment.Name}"
             Octopus.Action.Manual.ResponsibleTeamIds = "global/octopus-managers"
+            Octopus.Action.RunOnServer = "false"
         }
     }
 }
@@ -122,7 +125,6 @@ step "flyway-database-migrations" {
             Flyway.Database.User = "#{MySQL.Database.Admin.Username}"
             Flyway.Database.User.Password = "#{MySQL.Database.Admin.Password}"
             Flyway.Package.Value = "{\"PackageId\":\"octopub.mysql.flyway\",\"FeedId\":\"octopus-server-built-in\"}"
-            Flyway.PersonalAccessToken = ""
             Flyway.Target.Url = "#{Project.Database.ConnectionString}"
             Octopus.Action.Template.Id = "ActionTemplates-2201"
             Octopus.Action.Template.Version = "15"
@@ -182,7 +184,7 @@ step "kustomize" {
         worker_pool = "kubernetes-worker-pool"
 
         git_dependencies {
-            default_branch = "main"
+            default_branch = "#{Octopus.Release.Git.BranchName}"
             git_credential_id = "GitCredentials-21"
             git_credential_type = "Library"
             repository_uri = "https://github.com/twerthi/Octopub.git"
@@ -237,6 +239,7 @@ step "email-team-of-status-always-run" {
                 EOT
             Octopus.Action.Email.Subject = "Deployment of #{Octopus.Project.Name} #{if Octopus.Deployment.Error}Failed!#{else}Succeeded#{/if}"
             Octopus.Action.Email.ToTeamIds = "global/octopus-managers"
+            Octopus.Action.RunOnServer = "false"
         }
     }
 }
