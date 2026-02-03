@@ -59,7 +59,6 @@ variable "Project.Ingress.HostName" {
 
     value "octopub.#{Octopus.Release.Git.BranchName}.octopusdemos.com" {
         description = ""
-        environment = ["pull-requests"]
     }
 }
 
