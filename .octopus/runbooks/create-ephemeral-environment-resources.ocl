@@ -21,7 +21,6 @@ process {
             action_type = "Octopus.KubernetesRunScript"
             properties = {
                 Octopus.Action.Script.ScriptBody = <<-EOT
-                    <#
                     # Set varaibles
                     $clusterNamespace = "#{Octopus.RunbookRun.Git.BranchName | ToLower}"
                     
@@ -40,15 +39,19 @@ process {
                     {
                     	Write-Host "Namespace $clusterNamespace already exists, moving on ..."
                     }
-                    #>
-                    Write-Host "Release branch name: #{Octopus.Release.Git.BranchName}"
-                    Write-Host "Runbook branch name: #{Octopus.RunbookRun.Git.BranchName}"
+                    
                     EOT
                 Octopus.Action.Script.ScriptSource = "Inline"
                 Octopus.Action.Script.Syntax = "PowerShell"
+                OctopusUseBundledTooling = "False"
             }
             worker_pool = "default-worker-pool"
             worker_pool_variable = ""
+
+            container {
+                feed = "docker-hub"
+                image = "octopusdeploy/worker-tools:ubuntu.22.04"
+            }
         }
     }
 }
