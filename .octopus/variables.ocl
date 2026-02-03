@@ -56,6 +56,10 @@ variable "Project.Ingress.HostName" {
     value "octopub.test.octopusdemos.com" {
         environment = ["test"]
     }
+
+    value "octopub.#{Octopus.Release.Git.BranchName}.octopusdemos.com" {
+        description = ""
+    }
 }
 
 variable "Project.Migrate_At_Start" {
