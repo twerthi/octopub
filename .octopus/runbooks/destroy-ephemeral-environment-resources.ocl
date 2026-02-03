@@ -42,8 +42,14 @@ process {
                     EOT
                 Octopus.Action.Script.ScriptSource = "Inline"
                 Octopus.Action.Script.Syntax = "PowerShell"
+                OctopusUseBundledTooling = "False"
             }
             worker_pool = "container-worker-pool"
+
+            container {
+                feed = "docker-hub"
+                image = "octopusdeploy/worker-tools:ubuntu.22.04"
+            }
         }
     }
 }
