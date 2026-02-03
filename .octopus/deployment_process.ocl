@@ -159,7 +159,7 @@ step "kustomize" {
     action {
         action_type = "Octopus.Kubernetes.Kustomize"
         properties = {
-            Octopus.Action.GitRepository.Source = "External"
+            Octopus.Action.GitRepository.Source = "Project"
             Octopus.Action.Kubernetes.DeploymentTimeout = "180"
             Octopus.Action.Kubernetes.Kustomize.OverlayPath = "kustomize/envs/#{Octopus.Environment.Name}"
             Octopus.Action.Kubernetes.ResourceStatusCheck = "True"
@@ -182,13 +182,6 @@ step "kustomize" {
             OctopusUseBundledTooling = "False"
         }
         worker_pool = "kubernetes-worker-pool"
-
-        git_dependencies {
-            default_branch = "#{Octopus.Release.Git.BranchName}"
-            git_credential_id = "GitCredentials-21"
-            git_credential_type = "Library"
-            repository_uri = "https://github.com/twerthi/Octopub.git"
-        }
 
         packages "octopub-products-microservice-mysql" {
             acquisition_location = "NotAcquired"
