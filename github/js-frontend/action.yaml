@@ -146,12 +146,12 @@ runs:
     #     CF_JIRA_PROJECT_PREFIX: "OC"
     #   uses: codefresh-io/codefresh-report-image@latest
 
-    # - name: Push build information to Octopus Deploy 🐙
-    #   uses: OctopusDeploy/push-build-information-action@v3
-    #   with:
-    #     packages: |
-    #       twerthi/octopub-frontend
-    #     version: ${{ env.PACKAGE_VERSION  }}
-    #     server: ${{ inputs.octopus_server_url }}
-    #     api_Key: ${{ inputs.octopus_api_key }}
-    #     space: ${{ inputs.octopus_space }}      
+    - name: Push build information to Octopus Deploy 🐙
+      uses: OctopusDeploy/push-build-information-action@v3
+      with:
+        packages: |
+          twerthi/octopub-frontend
+        version: ${{ env.PACKAGE_VERSION  }}
+        server: ${{ inputs.octopus_server_url }}
+        api_Key: ${{ inputs.octopus_api_key }}
+        space: ${{ inputs.octopus_space }}      
