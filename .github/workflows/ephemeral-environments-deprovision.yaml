@@ -8,6 +8,12 @@ on:
       - main
     types:
       - closed
+    inputs:
+      branch_name:
+        description: 'The branch name to revert the last commit on'
+        required: true
+        default: 'MyNewFeature'
+      
   # push:
   #   branches:
   #     - main
@@ -17,6 +23,9 @@ jobs:
     #runs-on: ubuntu-latest
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0    
       - name: Deprovision Ephemeral Environment
         id: deprovision_ephemeral_environment
         uses: OctopusDeploy/deprovision-ephemeral-environment@v1.0.0
@@ -26,3 +35,13 @@ jobs:
           name: 'ephemeral-environment-pr-${{ github.event.pull_request.number }}'
           project: 'Ephemeral Environments'
           space: 'Default'
+      - name: Configure Git user
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+      - name: Revert the last commit
+        run: |
+          # 'HEAD^' refers to the commit just before the current HEAD (the last commit)
+          git revert HEAD --no-edit 
+          git push origin ${{ github.event.inputs.branch_name }}
