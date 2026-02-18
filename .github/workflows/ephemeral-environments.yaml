@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Create Ephemeral Environment
         id: create_ephemeral_environment
-        uses: OctopusDeploy/create-ephemeral-environment@v1
+        uses: OctopusDeploy/create-ephemeral-environment@v1.0.0
         with:
           server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
           api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
