@@ -16,10 +16,6 @@ variable "Project.Database.Hostname" {
     value "192.168.1.64" {}
 }
 
-variable "Project.Database.Name" {
-    value "octopub_#{Octopus.Environment.Name}" {}
-}
-
 variable "Project.Database.Password" {
     value "#{Octopus.Action[Get database password].Output.SA_PASSWORD}" {}
 }
@@ -113,4 +109,8 @@ variable "Project.Service.Product.Port" {
 
 variable "Project.Service.Product.TargetPort" {
     value "8083" {}
+}
+
+variable "Project.Database.Name" {
+    value "octopub_#{Octopus.Environment.Name | Replace \"-\" \"_\"}" {}
 }
