@@ -43,5 +43,6 @@ jobs:
       - name: Revert the last commit
         run: |
           # 'HEAD^' refers to the commit just before the current HEAD (the last commit)
+          git checkout ${{ github.event.inputs.branch_name }}
           git revert HEAD --no-edit 
           git push origin ${{ github.event.inputs.branch_name }}
