@@ -21,7 +21,7 @@ jobs:
       - name: Copy Kustomize Overlays
         run: |
           mkdir -p kustomize/envs/ephemeral-environment-pr-${{ github.event.pull_request.number }}
-          cp .github/kustomize/overlays/MyNewFeature/* kustomize/envs/ephemeral-environment-pr-${{ github.event.pull_request.number }}/
+          cp ${{ github.workspace }}/kustomize/overlays/MyNewFeature/* kustomize/envs/ephemeral-environment-pr-${{ github.event.pull_request.number }}/
       - name: Commit Kustomize Overlays
         uses: EndBug/add-and-commit@v9
         with:
