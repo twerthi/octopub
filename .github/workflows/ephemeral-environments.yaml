@@ -37,15 +37,15 @@ jobs:
           git_ref: ${{ github.head_ref }}
           channel: 'Ephemeral Environments'
 
-      # - name: Deploy a release in Octopus Deploy 🐙
-      #   id: deploy_a_release_in_octopus_deploy
-      #   uses: OctopusDeploy/deploy-release-action@v4
-      #   env:
-      #     OCTOPUS_API_KEY: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
-      #     OCTOPUS_URL: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
-      #     OCTOPUS_SPACE: 'Default'
-      #   with:
-      #     project: 'Ephemeral Environments'
-      #     release_number: ${{ steps.create_a_release_in_octopus_deploy.outputs.release_number }}
-      #     environments: |
-      #       ephemeral-environment-pr-${{ github.event.pull_request.number }}
+      - name: Deploy a release in Octopus Deploy 🐙
+        id: deploy_a_release_in_octopus_deploy
+        uses: OctopusDeploy/deploy-release-action@v4
+        env:
+          OCTOPUS_API_KEY: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
+          OCTOPUS_URL: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
+          OCTOPUS_SPACE: 'Default'
+        with:
+          project: 'Ephemeral Environments'
+          release_number: ${{ steps.create_a_release_in_octopus_deploy.outputs.release_number }}
+          environments: |
+            ephemeral-environment-pr-${{ github.event.pull_request.number }}
