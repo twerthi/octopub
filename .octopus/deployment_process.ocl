@@ -186,7 +186,7 @@ step "kustomize" {
         packages "octopub-products-microservice-mysql" {
             acquisition_location = "NotAcquired"
             feed = "docker-hub"
-            package_id = "octopussamples/octopub-products-microservice-mysql"
+            package_id = "twerthi/octopub-products-microservice-mysql"
             properties = {
                 Extract = "False"
                 Purpose = "DockerImageReference"
@@ -197,7 +197,7 @@ step "kustomize" {
         packages "octopub-frontend" {
             acquisition_location = "NotAcquired"
             feed = "docker-hub"
-            package_id = "octopussamples/octopub-frontend"
+            package_id = "twerthi/octopub-frontend"
             properties = {
                 Extract = "False"
                 Purpose = "DockerImageReference"
@@ -208,7 +208,7 @@ step "kustomize" {
         packages "octopub-audit-microservice-mysql" {
             acquisition_location = "NotAcquired"
             feed = "docker-hub"
-            package_id = "octopussamples/octopub-audit-microservice-mysql"
+            package_id = "twerthi/octopub-audit-microservice-mysql"
             properties = {
                 Extract = "False"
                 Purpose = "DockerImageReference"
