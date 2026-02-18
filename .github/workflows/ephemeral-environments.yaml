@@ -46,4 +46,4 @@ jobs:
           project: 'Ephemeral Environments'
           release_number: ${{ steps.create_a_release_in_octopus_deploy.outputs.release_number }}
           environments: |
-            'ephemeral-environment-pr-${{ github.event.pull_request.number }}'
+            ephemeral-environment-pr-${{ github.event.pull_request.number }}
