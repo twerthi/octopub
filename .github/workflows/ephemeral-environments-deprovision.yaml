@@ -1,0 +1,28 @@
+name: Octopus Ephemeral Environments Demo PR Closed
+permissions:
+  contents: write
+  packages: write
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+  # push:
+  #   branches:
+  #     - main
+
+jobs:
+  build:
+    #runs-on: ubuntu-latest
+    runs-on: self-hosted
+    steps:
+      - name: Deprovision Ephemeral Environment
+        id: deprovision_ephemeral_environment
+        uses: OctopusDeploy/deprovision-ephemeral-environment@v1
+        with:
+          server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
+          api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
+          name: 'ephemeral-environment-pr-${{ github.event.pull_request.number }}'
+          project: 'Ephemeral Environments'
+          space: 'Default'
