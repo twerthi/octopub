@@ -6,7 +6,7 @@ resources:
 
 patches:
   - target:
-      kind: Deployment
+      kind: Deployment 
       name: octopub-audit-deployment
     path: octopub-audits-deployment-mysql.yaml
   - target:
