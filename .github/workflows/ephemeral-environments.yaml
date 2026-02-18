@@ -15,15 +15,15 @@ jobs:
     #runs-on: ubuntu-latest
     runs-on: self-hosted
     steps:
-      # - name: Create Ephemeral Environment
-      #   id: create_ephemeral_environment
-      #   uses: OctopusDeploy/create-ephemeral-environment@v1.0.0
-      #   with:
-      #     server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
-      #     api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
-      #     name: 'ephemeral-environment-pr-${{ github.event.pull_request.number }}'
-      #     project: 'Ephemeral Environments'
-      #     space: 'Default'
+      - name: Create Ephemeral Environment
+        id: create_ephemeral_environment
+        uses: OctopusDeploy/create-ephemeral-environment@v1.0.0
+        with:
+          server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
+          api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
+          name: 'ephemeral-environment-pr-${{ github.event.pull_request.number }}'
+          project: 'Ephemeral Environments'
+          space: 'Default'
 
       - name: Create a release in Octopus Deploy 🐙
         id: create_a_release_in_octopus_deploy  
@@ -33,7 +33,8 @@ jobs:
           server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
           api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
           space: 'Default'
-          git_ref: ${{ github.ref }}
+          #git_ref: ${{ github.ref }}
+          git_ref: ${{ github.head_ref }}
           channel: 'Ephemeral Environments'
 
       # - name: Deploy a release in Octopus Deploy 🐙
