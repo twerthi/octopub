@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Deprovision Ephemeral Environment
         id: deprovision_ephemeral_environment
-        uses: OctopusDeploy/deprovision-ephemeral-environment@v1
+        uses: OctopusDeploy/deprovision-ephemeral-environment@v1.0.0
         with:
           server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
           api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
