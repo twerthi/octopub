@@ -89,3 +89,7 @@ variable "Project.Service.Product.TargetPort" {
 variable "Project.Database.Name" {
     value "octopub_#{Octopus.Environment.Name | Replace \"-\" \"_\"}" {}
 }
+
+variable "Project.Frontend.MockBackend" {
+    value "false" {}
+}
