@@ -1,0 +1,66 @@
+name: Octopus Ephemeral Environments Demo
+permissions:
+  contents: write
+  packages: write
+on:
+  pull_request:
+    branches:
+      - main
+  # push:
+  #   branches:
+  #     - main
+
+jobs:
+  build:
+    #runs-on: ubuntu-latest
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Copy Kustomize Overlays
+        run: |
+          mkdir -p kustomize/envs/ephemeral-environment-pr-${{ github.event.pull_request.number }}
+          cp ${{ github.workspace }}/kustomize/envs/MyNewFeature/* kustomize/envs/ephemeral-environment-pr-${{ github.event.pull_request.number }}/
+      - name: Commit Kustomize Overlays
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'kustomize/envs/ephemeral-environment-pr-${{ github.event.pull_request.number }}/*'
+          message: 'Add Kustomize overlays for ephemeral environment PR #${{ github.event.pull_request.number }}'
+          new_branch: 'MyNewFeature'
+      - name: Wait for commit to be pushed
+        run: sleep 10
+      - name: Create Ephemeral Environment
+        id: create_ephemeral_environment
+        uses: OctopusDeploy/create-ephemeral-environment@v1.0.0
+        with:
+          server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
+          api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
+          name: 'ephemeral-environment-pr-${{ github.event.pull_request.number }}'
+          project: 'Ephemeral Environments'
+          space: 'Default'
+
+      - name: Create a release in Octopus Deploy 🐙
+        id: create_a_release_in_octopus_deploy  
+        uses: OctopusDeploy/create-release-action@v4
+        with:
+          project: 'Ephemeral Environments'
+          server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
+          api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
+          space: 'Default'
+          #git_ref: ${{ github.ref }}
+          git_ref: ${{ github.head_ref }}
+          channel: 'Ephemeral Environments'
+
+      - name: Deploy a release in Octopus Deploy 🐙
+        id: deploy_a_release_in_octopus_deploy
+        uses: OctopusDeploy/deploy-release-action@v4
+        env:
+          OCTOPUS_API_KEY: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
+          OCTOPUS_URL: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
+          OCTOPUS_SPACE: 'Default'
+        with:
+          project: 'Ephemeral Environments'
+          release_number: ${{ steps.create_a_release_in_octopus_deploy.outputs.release_number }}
+          environments: |
+            ephemeral-environment-pr-${{ github.event.pull_request.number }}

@@ -17,4 +17,9 @@ spec:
           image: octopussamples/octopub-frontend
           ports:
             - containerPort: 8080
-              name: #{TestVar}
+              name: http-port
+          env:
+            - name: clientIdentifier
+              value: ""
+            - name: featureToggleSlug
+              value: ""
