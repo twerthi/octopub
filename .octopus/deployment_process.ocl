@@ -184,7 +184,7 @@ step "kustomize" {
         worker_pool = "kubernetes-worker-pool"
 
         git_dependencies {
-            default_branch = "MyNewFeature"
+            default_branch = "#{if Octopus.Release.CustomFields[Project.Build.Branch.Name]}#{Octopus.Release.CustomFields[Project.Build.Branch.Name]}#{else}main#{/if}"
             git_credential_id = "GitCredentials-21"
             git_credential_type = "Library"
             repository_uri = "https://github.com/twerthi/Octopub.git"
