@@ -18,7 +18,7 @@ spec:
           ports:
             - containerPort: 8080
               name: http-port
-        - env:
+          env:
             - name: clientIdentifier
               value: ""
             - name: featureToggleSlug
