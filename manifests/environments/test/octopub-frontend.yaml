@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: octopussamples/octopub-frontend
+          image: index.docker.io/twerthi/octopub-frontend:2026.03.06.80
           ports:
             - containerPort: 8080
-              name: #{TestVar}
+              name: frontend

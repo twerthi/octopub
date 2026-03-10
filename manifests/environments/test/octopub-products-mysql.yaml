@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: productservice
-          image: octopussamples/octopub-products-microservice-mysql
+          image: index.docker.io/twerthi/octopub-products-microservice-mysql:2026.03.06.64
           ports:
             - name: http-product
               containerPort: 8083
@@ -27,9 +27,9 @@ spec:
             - name: DATABASE_HOSTNAME
               value: "192.168.1.64"
             - name: DATABASE_PORT
-              value: "30000"
+              value: "30001"
             - name: DATABASE_NAME
-              value: "octopub_Development"
+              value: "octopub_clusterpi_Test"
             - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
