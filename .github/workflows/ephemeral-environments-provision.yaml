@@ -29,7 +29,7 @@ jobs:
           message: 'Add Kustomize overlays for ephemeral environment PR #${{ github.event.pull_request.number }}'
           new_branch: 'MyNewFeature'
       - name: Wait for commit to be pushed
-        run: sleep 10
+        run: sleep 15
       - name: Create Ephemeral Environment
         id: create_ephemeral_environment
         uses: OctopusDeploy/create-ephemeral-environment@v1.0.0

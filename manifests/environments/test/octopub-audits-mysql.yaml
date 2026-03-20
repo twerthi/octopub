@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auditservice
-          image: octopussamples/octopub-audit-microservice-mysql
+          image: index.docker.io/twerthi/octopub-audit-microservice-mysql:2026.03.06.77
           ports:
             - name: http-audit
               containerPort: 10000
@@ -27,9 +27,9 @@ spec:
             - name: DATABASE_HOSTNAME
               value: "192.168.1.64"
             - name: DATABASE_PORT
-              value: "30000"
+              value: "30001"
             - name: DATABASE_NAME
-              value: "octopub_Development"
+              value: "octopub_clusterpi_Test"
             - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
