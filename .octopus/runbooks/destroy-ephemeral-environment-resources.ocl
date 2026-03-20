@@ -14,7 +14,7 @@ process {
     step "delete-branch-namespace" {
         name = "Delete branch namespace"
         properties = {
-            Octopus.Action.TargetRoles = "Octopub-Audit"
+            Octopus.Action.TargetRoles = "Octopub-Audit" 
         }
 
         action {
