@@ -53,7 +53,7 @@ variable "Project.Ingress.HostName" {
         environment = ["test"]
     }
 
-    value "octopub.#{Octopus.Release.Git.BranchName | ToLower}.octopusdemos.com" {
+    value "octopub.#{Octopus.Environment.Name | ToLower}.octopusdemos.com" {
         description = ""
     }
 }
