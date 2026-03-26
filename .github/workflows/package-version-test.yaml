@@ -25,7 +25,7 @@ jobs:
           api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
           space: 'Default'
           packages: |
-            Run a Scipt:accept_message.Azure.Function:20211117.3
+            Run a Script:accept_message.Azure.Function:20211117.3
 
       # - name: Deploy a release in Octopus Deploy 🐙
       #   id: deploy_a_release_in_octopus_deploy
