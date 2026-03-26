@@ -10,6 +10,11 @@ on:
 jobs:
   build:
     #runs-on: ubuntu-latest
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Create a release in Octopus Deploy 🐙
         id: create_a_release_in_octopus_deploy  
