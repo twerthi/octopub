@@ -24,6 +24,8 @@ jobs:
           server: ${{ secrets.LOCAL_OCTOPUS_SERVER_URL }}
           api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
           space: 'Default'
+          packages: |
+            Run OctoPetShop Web:octopussamples/octopetshop-web:1.0.25322.141410
 
       # - name: Deploy a release in Octopus Deploy 🐙
       #   id: deploy_a_release_in_octopus_deploy
