@@ -149,9 +149,32 @@ step "flyway-database-migrations" {
     }
 }
 
+step "run-a-script" {
+    name = "Run a Script"
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                Get-ChildItem -Path $PWD -Recurse
+                
+                git branch
+                EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "container-worker-pool"
+
+        container {
+            feed = "docker-hub"
+            image = "octopusdeploy/worker-tools:6.5.0-ubuntu.22.04"
+        }
+    }
+}
+
 step "kustomize" {
     name = "Kustomize"
-    package_requirement = "AfterPackageAcquisition"
     properties = {
         Octopus.Action.TargetRoles = "Octopub-Frontend"
     }
@@ -188,8 +211,8 @@ step "kustomize" {
             git_credential_id = "GitCredentials-21"
             git_credential_type = "Library"
             repository_uri = "https://github.com/twerthi/Octopub.git"
-        }       
-       
+        }
+
         packages "octopub-products-microservice-mysql" {
             acquisition_location = "NotAcquired"
             feed = "docker-hub"
