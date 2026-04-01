@@ -156,9 +156,15 @@ step "run-a-script" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.Script.ScriptBody = <<-EOT
+                
+                # Fix ANSI Color on PWSH Core issues when displaying objects
+                if ($PSEdition -eq "Core") {
+                    $PSStyle.OutputRendering = "PlainText"
+                }
+                
                 Get-ChildItem -Path $PWD -Recurse
                 
-                git branch
+                #git branch
                 EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
