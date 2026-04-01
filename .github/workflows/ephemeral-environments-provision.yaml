@@ -40,6 +40,10 @@ jobs:
           project: 'Ephemeral Environments'
           space: 'Default'
 
+      - name: Get latest SHA
+        id: get_sha
+        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT          
+
       - name: Create a release in Octopus Deploy 🐙
         id: create_a_release_in_octopus_deploy  
         uses: OctopusDeploy/create-release-action@v4
@@ -50,7 +54,7 @@ jobs:
           space: 'Default'
           #git_ref: ${{ github.ref }}
           git_ref: ${{ github.head_ref }}
-          git_commit: ${{ github.event.pull_request.head.sha }}
+          git_commit: ${{ steps.get_sha.outputs.sha }}
           channel: 'Ephemeral Environments'
 
       - name: Deploy a release in Octopus Deploy 🐙
