@@ -49,7 +49,7 @@ jobs:
           api_key: ${{ secrets.LOCAL_OCTOPUS_API_KEY }}
           space: 'Default'
           #git_ref: ${{ github.ref }}
-          #git_ref: ${{ github.head_ref }}
+          git_ref: ${{ github.head_ref }}
           git_commit: ${{ github.event.pull_request.head.sha }}
           channel: 'Ephemeral Environments'
 
