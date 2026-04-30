@@ -4,9 +4,12 @@ permissions:
   packages: write
 on:
   workflow_dispatch:
-#  push: 
-#    branches:
-#      - main
+  push: 
+    branches:
+      - main
+    paths:
+      - 'java/audit-microservice/**'
+
 
 jobs:
   build:
