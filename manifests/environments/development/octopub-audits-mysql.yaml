@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auditservice
-          image: index.docker.io/twerthi/octopub-audit-microservice-mysql:2026.06.15.104
+          image: index.docker.io/twerthi/octopub-audit-microservice-mysql:2026.06.15.105
           ports:
             - name: http-audit
               containerPort: 10000
