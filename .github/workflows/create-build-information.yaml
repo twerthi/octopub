@@ -9,10 +9,14 @@ on:
 jobs:
   commit-changes:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to push commits
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Clean update-file.txt (keep only lines starting with #)
         run: |
@@ -47,4 +51,6 @@ jobs:
           done
 
       - name: Push All Commits
-        run: git push
+        run: git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
