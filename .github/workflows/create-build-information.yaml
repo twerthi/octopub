@@ -5,6 +5,8 @@ on:
 #    branches:
 #      - main
   workflow_dispatch: # Allows manual triggering
+  schedule:
+    - cron: '5 22 * * *'  # Every day at 2:05pm UTC
 
 jobs:
   commit-changes:
