@@ -1,0 +1,50 @@
+name: Random Commit Automation
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  commit-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Clean update-file.txt (keep only lines starting with #)
+        run: |
+          if [ -f update-file.txt ]; then
+            grep "^#" update-file.txt > tmp-file.txt && mv tmp-file.txt update-file.txt || echo "" > update-file.txt
+          else
+            touch update-file.txt
+          fi
+
+      - name: Commit Loop with Random Messages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          ITERATIONS=$(( RANDOM % 5 + 1 ))
+          echo "Running $ITERATIONS iterations"
+
+          for i in $(seq 1 $ITERATIONS); do
+            # Fetch a funny developer commit message from whatthecommit.com
+            MSG=$(curl -s https://whatthecommit.com/index.txt)
+
+            # Clean up any potential special characters or quotes
+            CLEAN_MSG=$(echo "$MSG" | tr -d '"'\''`')
+
+            echo "Iteration $i: $CLEAN_MSG"
+
+            # Append the commit message to update-file.txt
+            echo "$CLEAN_MSG" >> update-file.txt
+
+            git add update-file.txt
+            git commit -m "$CLEAN_MSG"
+          done
+
+      - name: Push All Commits
+        run: git push
