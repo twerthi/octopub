@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Issue #3 is now Issue #9
-This bug has driven lots of coders completely mad. You wont believe how it ended up being fixed
-Fixed what was broken.
 This solves it.
