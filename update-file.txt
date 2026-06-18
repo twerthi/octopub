@@ -2,3 +2,4 @@
 Issue #3 is now Issue #9
 This bug has driven lots of coders completely mad. You wont believe how it ended up being fixed
 Fixed what was broken.
+This solves it.
