@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-trying to do something right!
-Fixed mispeling
-Fix the fixes
-Fixed compilation errors
-That last commit message about silly mistakes pales in comparision to this one
+Politely asked the coffee machine and nobody noticed
