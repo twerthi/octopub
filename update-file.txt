@@ -1,4 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Sacrificed the compiler and it worked somehow
-Politely asked 42 with zero tests
-Apologized to a time paradox with a spoon
+Negotiated with Schrödinger's bug and it worked somehow
