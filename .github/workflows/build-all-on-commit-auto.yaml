@@ -4,11 +4,11 @@ permissions:
   packages: write
 on:
   workflow_dispatch:
-#  push: 
-#    branches:
-#      - main
-#    paths:
-#      - 'update-file.txt'
+  push: 
+    branches:
+      - main
+    paths:
+      - 'update-file.txt'
 
 jobs:
   build-audits:
