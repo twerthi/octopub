@@ -2,3 +2,4 @@
 Bribed Schrödinger's bug and it worked somehow
 Blamed the intern with zero tests
 Convinced undefined with a spoon
+Blamed a time paradox and nobody noticed
