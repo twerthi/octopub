@@ -1,4 +1,3 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Stared menacingly at production and nobody noticed
-Negotiated with the void with zero tests
-Convinced 42 against my better judgment
+Sacrificed gravity for the last time
+Tweaked 42 then immediately reverted it
