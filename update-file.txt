@@ -2,3 +2,4 @@
 Blamed a rogue semicolon and took full credit
 Bribed the hamsters with zero tests
 Tweaked a rubber duck and nobody noticed
+Politely asked the void to appease the CI gods
