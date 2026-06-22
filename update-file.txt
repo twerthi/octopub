@@ -1,3 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Accidentally improved the sprint board and it worked somehow
-Stared menacingly at Schrödinger's bug with a spoon
+Stared menacingly at undefined with zero tests
