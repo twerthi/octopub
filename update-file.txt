@@ -1,3 +1,6 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Sacrificed production and called it a feature
-Refactored the compiler before standup
+Politely asked the intern for the last time
+Apologized to a rogue semicolon with a spoon
+Negotiated with the coffee machine until it worked
+Stared menacingly at the coffee machine then immediately reverted it
+Tweaked 42 and blamed caching
