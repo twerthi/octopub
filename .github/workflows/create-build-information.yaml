@@ -1,11 +1,11 @@
 name: Random Commit Automation
 
 on:
-#  schedule:
-#    - cron: '11 10 * * *'  # Every day at 7:10am PDT (14:10 UTC)
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '11 10 * * *'  # Every day at 7:10am PDT (14:10 UTC)
+#  push:
+#    branches:
+#      - main
   workflow_dispatch: # Allows manual triggering
 
 jobs:
