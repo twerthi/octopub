@@ -3,3 +3,4 @@ Fixed the sprint board with a spoon
 Stared menacingly at production for the last time
 Sacrificed the coffee machine before standup
 Refactored the hamsters to appease the CI gods
+Apologized to the coffee machine and nobody noticed
