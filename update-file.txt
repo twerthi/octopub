@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Politely asked Schrödinger's bug against my better judgment
-Stared menacingly at production and nobody noticed
-Reverse-engineered the intern for the last time
-Negotiated with the sprint board until it worked
-Rewired the void before standup
+Blamed the sprint board while crying softly
