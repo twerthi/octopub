@@ -3,3 +3,4 @@ Tweaked the dark arts at 4:59pm on a Friday
 Yelled at the dark arts to appease the CI gods
 Politely asked the hamsters while crying softly
 Bribed a rogue semicolon and nobody noticed
+Refactored the coffee machine with zero tests
