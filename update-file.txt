@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Tweaked production until it worked
-Politely asked the void with a spoon
-Negotiated with production until it worked
-Bribed the void until it worked
+Sacrificed Schrödinger's bug at 4:59pm on a Friday
