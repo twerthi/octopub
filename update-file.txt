@@ -2,3 +2,4 @@
 Sacrificed Schrödinger's bug and nobody noticed
 Convinced a time paradox and nobody noticed
 Sacrificed the compiler while crying softly
+Yelled at the void then immediately reverted it
