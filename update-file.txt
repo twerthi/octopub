@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Negotiated with Schrödinger's bug and blamed caching
-Yelled at a time paradox and called it a feature
-Accidentally improved the sprint board to appease the CI gods
-Blamed the intern and took full credit
+Negotiated with the void against my better judgment
