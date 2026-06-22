@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Blamed the sprint board while crying softly
-Stared menacingly at the hamsters until it worked
-Accidentally improved the void with a spoon
-Refactored 42 while crying softly
+Blamed a rubber duck at 4:59pm on a Friday
