@@ -1,4 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Blamed the void and blamed caching
-Stared menacingly at 42 against my better judgment
-Yelled at the coffee machine and took full credit
+Stared menacingly at a time paradox while crying softly
