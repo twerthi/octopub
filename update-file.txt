@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Reverse-engineered the hamsters and called it a feature
-Bribed the void with a spoon
-Refactored a rogue semicolon and it worked somehow
-Accidentally improved the void and blamed caching
+Bribed the void to appease the CI gods
