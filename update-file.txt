@@ -1,3 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Convinced the sprint board before standup
-Apologized to 42 and took full credit
+Tweaked the compiler and nobody noticed
