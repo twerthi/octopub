@@ -1,2 +1,5 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Reverse-engineered Schrödinger's bug and nobody noticed
+Blamed a rogue semicolon and took full credit
+Bribed the hamsters with zero tests
+Tweaked a rubber duck and nobody noticed
+Politely asked the void to appease the CI gods
