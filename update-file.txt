@@ -1,4 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Bribed the sprint board before standup
-Reverse-engineered a rogue semicolon and took full credit
-Rewired undefined and nobody noticed
+Reverse-engineered the void and took full credit
