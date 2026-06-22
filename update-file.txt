@@ -3,3 +3,4 @@ Tweaked the dark arts against my better judgment
 Yelled at undefined at 4:59pm on a Friday
 Reverse-engineered the hamsters with zero tests
 Reverse-engineered a rubber duck for the last time
+Rewired a rogue semicolon and called it a feature
