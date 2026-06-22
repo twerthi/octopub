@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Refactored the dark arts before standup
-Politely asked the hamsters then immediately reverted it
-Negotiated with the dark arts while crying softly
-Tweaked the hamsters at 4:59pm on a Friday
-Negotiated with gravity with zero tests
+Reverse-engineered a rubber duck before standup
