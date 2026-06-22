@@ -3,3 +3,4 @@ Politely asked Schrödinger's bug against my better judgment
 Stared menacingly at production and nobody noticed
 Reverse-engineered the intern for the last time
 Negotiated with the sprint board until it worked
+Rewired the void before standup
