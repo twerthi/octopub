@@ -2,3 +2,4 @@
 Reverse-engineered production at 4:59pm on a Friday
 Politely asked the hamsters and nobody noticed
 Negotiated with production and nobody noticed
+Tweaked Schrödinger's bug and nobody noticed
