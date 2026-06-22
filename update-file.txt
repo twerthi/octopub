@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Accidentally improved 42 and took full credit
-Rewired the sprint board and blamed caching
-Refactored the hamsters with a spoon
-Reverse-engineered the intern before standup
+Refactored production against my better judgment
