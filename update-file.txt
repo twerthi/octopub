@@ -1,4 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Stared menacingly at the coffee machine with zero tests
-Fixed the coffee machine and took full credit
-Blamed the coffee machine and took full credit
+Apologized to a rogue semicolon before standup
