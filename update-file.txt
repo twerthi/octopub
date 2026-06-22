@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Politely asked production at 4:59pm on a Friday
-Fixed a rubber duck to appease the CI gods
-Rewired the intern to appease the CI gods
-Apologized to a rogue semicolon before standup
-Reverse-engineered the intern and nobody noticed
+Rewired a rubber duck and blamed caching
