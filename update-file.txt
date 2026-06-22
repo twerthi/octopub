@@ -1,3 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Accidentally improved undefined then immediately reverted it
-Sacrificed Schrödinger's bug for the last time
+Yelled at the dark arts with a spoon
