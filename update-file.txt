@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Yelled at a time paradox to appease the CI gods
-Negotiated with the dark arts and took full credit
-Apologized to undefined at 4:59pm on a Friday
-Tweaked production then immediately reverted it
+Accidentally improved the sprint board and it worked somehow
