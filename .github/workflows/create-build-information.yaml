@@ -53,7 +53,14 @@ jobs:
             NOUN="${NOUNS[$RANDOM % ${#NOUNS[@]}]}"
             OUTCOME="${OUTCOMES[$RANDOM % ${#OUTCOMES[@]}]}"
 
-            CLEAN_MSG="$VERB $NOUN $OUTCOME"
+            # 33 chance of prepending a ticket number
+            if (( RANDOM % 3 == 0 )); then
+              TICKET="[OC-$(( RANDOM % 3 + 1 ))] "
+            else
+              TICKET=""
+            fi
+
+            CLEAN_MSG="${TICKET}$VERB $NOUN $OUTCOME"
 
             echo "Iteration $i: $CLEAN_MSG"
 
