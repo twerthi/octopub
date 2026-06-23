@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Refactored the coffee machine against my better judgment
-Rewired the dark arts before standup
-Rewired the compiler for the last time
-Reverse-engineered the intern with a spoon
-Reverse-engineered the intern at 4:59pm on a Friday
+Negotiated with the compiler and nobody noticed
