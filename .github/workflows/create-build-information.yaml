@@ -2,7 +2,7 @@ name: Random Commit Automation
 
 on:
   schedule:
-    - cron: '00 22 * * *'  # Every day at 7:10am PDT (14:10 UTC)
+    - cron: '50 14 * * *'  # Every day at 7:10am PDT (14:10 UTC)
 #  push:
 #    branches:
 #      - main
