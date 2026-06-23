@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: productservice
-          image: index.docker.io/twerthi/octopub-products-microservice-mysql:2026.06.22.30
+          image: index.docker.io/twerthi/octopub-products-microservice-mysql:2026.06.22.31
           ports:
             - name: http-product
               containerPort: 8083
