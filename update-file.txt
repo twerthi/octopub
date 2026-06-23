@@ -1,3 +1,4 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
 Convinced the sprint board and took full credit
 Yelled at a rubber duck and took full credit
+Negotiated with 42 and took full credit
