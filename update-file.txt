@@ -2,3 +2,4 @@
 Negotiated with the compiler and nobody noticed
 Accidentally improved a rubber duck and took full credit
 Reverse-engineered the void and it worked somehow
+Bribed the void then immediately reverted it
