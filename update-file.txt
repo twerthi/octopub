@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Negotiated with the compiler and nobody noticed
-Accidentally improved a rubber duck and took full credit
-Reverse-engineered the void and it worked somehow
-Bribed the void then immediately reverted it
-Yelled at the sprint board then immediately reverted it
+Convinced the sprint board and took full credit
