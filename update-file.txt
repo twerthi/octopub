@@ -1,2 +1,5 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Convinced the dark arts then immediately reverted it
+Bribed a rogue semicolon and nobody noticed
+Bribed a rogue semicolon and called it a feature
+Negotiated with Schrödinger's bug and nobody noticed
+[OC-1] Yelled at gravity to appease the CI gods
