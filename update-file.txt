@@ -1,3 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-[OC-1] Negotiated with a rogue semicolon and nobody noticed
-[OC-1] Sacrificed a rubber duck with zero tests
+Bribed production and called it a feature
