@@ -9,6 +9,8 @@ on:
       - main
     types:
       - closed
+    paths-ignore:
+      - 'update-file.txt'
     inputs:
       branch_name:
         description: 'The branch name to revert the last commit on'
