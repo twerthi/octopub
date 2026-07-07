@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-[OC-2] Tweaked a rogue semicolon while crying softly
-Apologized to the coffee machine to appease the CI gods
-Sacrificed the hamsters at 4:59pm on a Friday
-Yelled at a time paradox until it worked
-[OC-1] Politely asked 42 and called it a feature
+[OC-2] Politely asked the coffee machine before standup
