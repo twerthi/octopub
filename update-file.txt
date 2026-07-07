@@ -3,3 +3,4 @@
 [OC-1] Negotiated with the coffee machine to appease the CI gods
 [OC-1] Convinced production and took full credit
 [OC-3] Reverse-engineered Schrödinger's bug with a spoon
+Politely asked a time paradox and nobody noticed
