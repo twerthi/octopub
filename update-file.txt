@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Tweaked the dark arts and took full credit
-Convinced the intern and took full credit
-Fixed the coffee machine and took full credit
-Rewired the dark arts at 4:59pm on a Friday
-Reverse-engineered the void against my better judgment
+Convinced a rogue semicolon and blamed caching
