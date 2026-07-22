@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-[OC-2] Bribed gravity with a spoon
-Bribed undefined and took full credit
-Blamed production at 4:59pm on a Friday
-Tweaked the sprint board against my better judgment
+Negotiated with the hamsters to appease the CI gods
