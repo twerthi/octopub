@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Negotiated with the hamsters to appease the CI gods
-Negotiated with the void and it worked somehow
-Negotiated with the void at 4:59pm on a Friday
-[OC-1] Rewired a rogue semicolon and blamed caching
+Bribed the dark arts with zero tests
