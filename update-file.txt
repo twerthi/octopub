@@ -1,2 +1,3 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
 Refactored Schrödinger's bug to appease the CI gods
+Yelled at the coffee machine against my better judgment
