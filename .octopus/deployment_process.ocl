@@ -149,9 +149,39 @@ step "flyway-database-migrations" {
     }
 }
 
+step "run-a-script" {
+    name = "Run a Script"
+
+    action {
+        action_type = "Octopus.Script"
+        is_disabled = true
+        properties = {
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                
+                # Fix ANSI Color on PWSH Core issues when displaying objects
+                if ($PSEdition -eq "Core") {
+                    $PSStyle.OutputRendering = "PlainText"
+                }
+                
+                Get-ChildItem -Path $PWD -Recurse
+                
+                #git branch
+                EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "container-worker-pool"
+
+        container {
+            feed = "docker-hub"
+            image = "octopusdeploy/worker-tools:6.5.0-ubuntu.22.04"
+        }
+    }
+}
+
 step "kustomize" {
     name = "Kustomize"
-    package_requirement = "AfterPackageAcquisition"
     properties = {
         Octopus.Action.TargetRoles = "Octopub-Frontend"
     }
@@ -183,10 +213,17 @@ step "kustomize" {
         }
         worker_pool = "kubernetes-worker-pool"
 
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-21"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/twerthi/Octopub.git"
+        }
+
         packages "octopub-products-microservice-mysql" {
             acquisition_location = "NotAcquired"
             feed = "docker-hub"
-            package_id = "octopussamples/octopub-products-microservice-mysql"
+            package_id = "twerthi/octopub-products-microservice-mysql"
             properties = {
                 Extract = "False"
                 Purpose = "DockerImageReference"
@@ -197,7 +234,7 @@ step "kustomize" {
         packages "octopub-frontend" {
             acquisition_location = "NotAcquired"
             feed = "docker-hub"
-            package_id = "octopussamples/octopub-frontend"
+            package_id = "twerthi/octopub-frontend"
             properties = {
                 Extract = "False"
                 Purpose = "DockerImageReference"
@@ -208,7 +245,7 @@ step "kustomize" {
         packages "octopub-audit-microservice-mysql" {
             acquisition_location = "NotAcquired"
             feed = "docker-hub"
-            package_id = "octopussamples/octopub-audit-microservice-mysql"
+            package_id = "twerthi/octopub-audit-microservice-mysql"
             properties = {
                 Extract = "False"
                 Purpose = "DockerImageReference"
