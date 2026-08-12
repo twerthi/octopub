@@ -31,6 +31,26 @@ process {
         }
     }
 
+    step "mysql-drop-database" {
+        name = "MySQL - Drop database"
+
+        action {
+            properties = {
+                mySqlAuthenticationMethod = "usernamepassword"
+                mySqlCommand = "DROP DATABASE `#{Project.Database.Name}`;"
+                mySqlDatabaseName = "#{Project.Database.Name}"
+                mySqlPassword = "#{Octopus.Action[Get database password].Output.SA_PASSWORD}"
+                mySqlServerName = "#{MySQL.Server.Name}"
+                mySqlServerPort = "3306"
+                mySqlTrustSSL = "False"
+                mySqlUsername = "#{MySQL.Database.Admin.Username}"
+                Octopus.Action.Template.Id = "ActionTemplates-7861"
+                Octopus.Action.Template.Version = "3"
+            }
+            worker_pool = "database-worker-pool"
+        }
+    }
+
     step "delete-branch-namespace" {
         name = "Delete branch namespace"
         properties = {
