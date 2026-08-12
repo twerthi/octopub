@@ -11,10 +11,30 @@ run_retention_policy {
 }
 
 process {
+    step "get-database-password" {
+        name = "Get database password"
+
+        action {
+            properties = {
+                Octopus.Action.Template.Id = "ActionTemplates-5241"
+                Octopus.Action.Template.Version = "9"
+                Vault.Retrieve.KV.V2.Secrets.ApiVersion = "v1"
+                Vault.Retrieve.KV.V2.Secrets.AuthToken = "#{HashiCorp.Vault.Auth.Token}"
+                Vault.Retrieve.KV.V2.Secrets.FieldValues = "SA_PASSWORD | SA_PASSWORD"
+                Vault.Retrieve.KV.V2.Secrets.PrintVariableNames = "True"
+                Vault.Retrieve.KV.V2.Secrets.RecursiveSearch = "False"
+                Vault.Retrieve.KV.V2.Secrets.RetrievalMethod = "Get"
+                Vault.Retrieve.KV.V2.Secrets.SecretsPath = "/secret/mysqlserver"
+                Vault.Retrieve.KV.V2.Secrets.VaultAddress = "#{HashiCorp.Vault.Server.Url}"
+            }
+            worker_pool = "linux-worker-pool"
+        }
+    }
+
     step "delete-branch-namespace" {
         name = "Delete branch namespace"
         properties = {
-            Octopus.Action.TargetRoles = "Octopub-Audit" 
+            Octopus.Action.TargetRoles = "Octopub-Audit"
         }
 
         action {
