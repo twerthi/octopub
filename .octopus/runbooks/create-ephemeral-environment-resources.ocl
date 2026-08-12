@@ -11,6 +11,44 @@ run_retention_policy {
 }
 
 process {
+    step "get-database-password" {
+        name = "Get database password"
+
+        action {
+            properties = {
+                Octopus.Action.Template.Id = "ActionTemplates-5241"
+                Octopus.Action.Template.Version = "9"
+                Vault.Retrieve.KV.V2.Secrets.ApiVersion = "v1"
+                Vault.Retrieve.KV.V2.Secrets.AuthToken = "#{HashiCorp.Vault.Auth.Token}"
+                Vault.Retrieve.KV.V2.Secrets.FieldValues = "SA_PASSWORD | SA_PASSWORD"
+                Vault.Retrieve.KV.V2.Secrets.PrintVariableNames = "True"
+                Vault.Retrieve.KV.V2.Secrets.RecursiveSearch = "False"
+                Vault.Retrieve.KV.V2.Secrets.RetrievalMethod = "Get"
+                Vault.Retrieve.KV.V2.Secrets.SecretsPath = "/secret/mysqlserver"
+                Vault.Retrieve.KV.V2.Secrets.VaultAddress = "#{HashiCorp.Vault.Server.Url}"
+            }
+            worker_pool = "linux-worker-pool"
+        }
+    }
+    step "mysql-create-database-if-not-exists" {
+        name = "MySQL - Create Database If Not Exists"
+
+        action {
+            properties = {
+                createDatabaseName = "#{Project.Database.Name}"
+                createMySQLServerName = "#{MySQL.Server.Name}"
+                createPort = "#{MySQL.Server.Port}"
+                createUsername = "#{MySQL.Database.Admin.Username}"
+                createUserPassword = "#{Octopus.Action[Get database password].Output.SA_PASSWORD}"
+                createUseSSL = "False"
+                mysqlAdditionalParameters = "AllowPublicKeyRetrieval=True"
+                mySqlAuthenticationMethod = "usernamepassword"
+                Octopus.Action.Template.Id = "ActionTemplates-555"
+                Octopus.Action.Template.Version = "9"
+            }
+            worker_pool = "database-worker-pool"
+        }
+    }        
     step "create-namespace-if-not-exists" {
         name = "Create namespace if not exists"
         properties = {
