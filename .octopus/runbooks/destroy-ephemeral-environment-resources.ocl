@@ -38,6 +38,7 @@ process {
             properties = {
                 mySqlAuthenticationMethod = "usernamepassword"
                 mySqlCommand = "DROP DATABASE `#{Project.Database.Name}`;"
+                mySqlCommandTimeout = "0"
                 mySqlDatabaseName = "#{Project.Database.Name}"
                 mySqlPassword = "#{Octopus.Action[Get database password].Output.SA_PASSWORD}"
                 mySqlServerName = "#{MySQL.Server.Name}"
