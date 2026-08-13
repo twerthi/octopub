@@ -45,7 +45,7 @@ process {
                 mySqlTrustSSL = "False"
                 mySqlUsername = "#{MySQL.Database.Admin.Username}"
                 Octopus.Action.Template.Id = "ActionTemplates-7881"
-                Octopus.Action.Template.Version = "2"
+                Octopus.Action.Template.Version = "3"
             }
             worker_pool = "default-worker-pool"
         }
