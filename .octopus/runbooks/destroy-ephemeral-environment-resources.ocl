@@ -41,7 +41,7 @@ process {
                 mySqlDatabaseName = "#{Project.Database.Name}"
                 mySqlPassword = "#{Octopus.Action[Get database password].Output.SA_PASSWORD}"
                 mySqlServerName = "#{MySQL.Server.Name}"
-                mySqlServerPort = "3306"
+                mySqlServerPort = "#{MySQL.Server.Port}"
                 mySqlTrustSSL = "False"
                 mySqlUsername = "#{MySQL.Database.Admin.Username}"
                 Octopus.Action.Template.Id = "ActionTemplates-7881"
