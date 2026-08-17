@@ -2,3 +2,4 @@
 Stared menacingly at the compiler for the last time
 Negotiated with Schrödinger's bug against my better judgment
 Negotiated with the sprint board with zero tests
+Rewired a rogue semicolon and called it a feature
