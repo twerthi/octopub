@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Stared menacingly at the compiler for the last time
-Negotiated with Schrödinger's bug against my better judgment
-Negotiated with the sprint board with zero tests
-Rewired a rogue semicolon and called it a feature
-Politely asked the sprint board and blamed caching
+Tweaked gravity against my better judgment
