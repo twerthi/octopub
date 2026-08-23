@@ -2,3 +2,4 @@
 Blamed a rogue semicolon with zero tests
 Tweaked a rogue semicolon then immediately reverted it
 Fixed 42 and nobody noticed
+Bribed Schrödinger's bug and it worked somehow
