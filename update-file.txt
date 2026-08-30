@@ -1,2 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-[OC-2] Refactored a rubber duck and called it a feature
+[OC-2] Apologized to the sprint board before standup
