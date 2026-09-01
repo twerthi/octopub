@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-[OC-1] Blamed the void to appease the CI gods
-Stared menacingly at the compiler and took full credit
-[OC-3] Tweaked undefined before standup
-[OC-2] Bribed the hamsters and called it a feature
+Sacrificed a time paradox and blamed caching
