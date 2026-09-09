@@ -1,5 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Convinced the coffee machine and took full credit
-Accidentally improved 42 and called it a feature
-[OC-1] Negotiated with a rubber duck with zero tests
-Tweaked gravity for the last time
+Fixed a rogue semicolon to appease the CI gods
