@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-[OC-3] Rewired the compiler until it worked
-Bribed production and blamed caching
-Bribed a rogue semicolon while crying softly
-[OC-1] Rewired a rogue semicolon with a spoon
-Sacrificed the coffee machine and it worked somehow
+Tweaked the dark arts with zero tests
