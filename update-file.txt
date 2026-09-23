@@ -1,4 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Bribed a rubber duck while crying softly
-Sacrificed the dark arts and took full credit
-Bribed undefined and called it a feature
+Politely asked production and called it a feature
