@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: index.docker.io/twerthi/octopub-frontend:2026.09.24.139
+          image: index.docker.io/twerthi/octopub-frontend:2026.09.28.143
           ports:
             - containerPort: 8080
               name: frontend
