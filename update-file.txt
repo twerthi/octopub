@@ -1,4 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Yelled at the sprint board while crying softly
-Tweaked gravity at 4:59pm on a Friday
-[OC-3] Bribed Schrödinger's bug and nobody noticed
+[OC-1] Fixed the compiler with a spoon
