@@ -3,3 +3,4 @@ Blamed a time paradox until it worked
 [OC-3] Yelled at the sprint board before standup
 Convinced undefined then immediately reverted it
 Stared menacingly at a rubber duck before standup
+[OC-1] Politely asked the void before standup
