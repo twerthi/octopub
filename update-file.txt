@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Accidentally improved Schrödinger's bug against my better judgment
-[OC-1] Negotiated with the hamsters while crying softly
-Fixed the hamsters until it worked
-Apologized to a rubber duck until it worked
-Apologized to Schrödinger's bug and nobody noticed
+[OC-2] Reverse-engineered gravity and it worked somehow
