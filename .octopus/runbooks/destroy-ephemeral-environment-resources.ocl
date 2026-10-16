@@ -11,47 +11,6 @@ run_retention_policy {
 }
 
 process {
-    step "get-database-password" {
-        name = "Get database password"
-
-        action {
-            properties = {
-                Octopus.Action.Template.Id = "ActionTemplates-5241"
-                Octopus.Action.Template.Version = "9"
-                Vault.Retrieve.KV.V2.Secrets.ApiVersion = "v1"
-                Vault.Retrieve.KV.V2.Secrets.AuthToken = "#{HashiCorp.Vault.Auth.Token}"
-                Vault.Retrieve.KV.V2.Secrets.FieldValues = "SA_PASSWORD | SA_PASSWORD"
-                Vault.Retrieve.KV.V2.Secrets.PrintVariableNames = "True"
-                Vault.Retrieve.KV.V2.Secrets.RecursiveSearch = "False"
-                Vault.Retrieve.KV.V2.Secrets.RetrievalMethod = "Get"
-                Vault.Retrieve.KV.V2.Secrets.SecretsPath = "/secret/mysqlserver"
-                Vault.Retrieve.KV.V2.Secrets.VaultAddress = "#{HashiCorp.Vault.Server.Url}"
-            }
-            worker_pool = "linux-worker-pool"
-        }
-    }
-
-    step "mysql-drop-database" {
-        name = "MySQL - Drop database"
-
-        action {
-            properties = {
-                mySqlAuthenticationMethod = "usernamepassword"
-                mySqlCommand = "DROP DATABASE `#{Project.Database.Name}`;"
-                mySqlCommandTimeout = "0"
-                mySqlDatabaseName = "#{Project.Database.Name}"
-                mySqlPassword = "#{Octopus.Action[Get database password].Output.SA_PASSWORD}"
-                mySqlServerName = "#{MySQL.Server.Name}"
-                mySqlServerPort = "#{MySQL.Server.Port}"
-                mySqlTrustSSL = "False"
-                mySqlUsername = "#{MySQL.Database.Admin.Username}"
-                Octopus.Action.Template.Id = "ActionTemplates-7861"
-                Octopus.Action.Template.Version = "4"
-            }
-            worker_pool = "database-worker-pool"
-        }
-    }
-
     step "delete-branch-namespace" {
         name = "Delete branch namespace"
         properties = {
@@ -91,6 +50,47 @@ process {
                 feed = "docker-hub"
                 image = "octopusdeploy/worker-tools:ubuntu.22.04"
             }
+        }
+    }
+
+    step "get-database-password" {
+        name = "Get database password"
+
+        action {
+            properties = {
+                Octopus.Action.Template.Id = "ActionTemplates-5241"
+                Octopus.Action.Template.Version = "9"
+                Vault.Retrieve.KV.V2.Secrets.ApiVersion = "v1"
+                Vault.Retrieve.KV.V2.Secrets.AuthToken = "#{HashiCorp.Vault.Auth.Token}"
+                Vault.Retrieve.KV.V2.Secrets.FieldValues = "SA_PASSWORD | SA_PASSWORD"
+                Vault.Retrieve.KV.V2.Secrets.PrintVariableNames = "True"
+                Vault.Retrieve.KV.V2.Secrets.RecursiveSearch = "False"
+                Vault.Retrieve.KV.V2.Secrets.RetrievalMethod = "Get"
+                Vault.Retrieve.KV.V2.Secrets.SecretsPath = "/secret/mysqlserver"
+                Vault.Retrieve.KV.V2.Secrets.VaultAddress = "#{HashiCorp.Vault.Server.Url}"
+            }
+            worker_pool = "linux-worker-pool"
+        }
+    }
+
+    step "mysql-drop-database" {
+        name = "MySQL - Drop database"
+
+        action {
+            properties = {
+                mySqlAuthenticationMethod = "usernamepassword"
+                mySqlCommand = "DROP DATABASE `#{Project.Database.Name}`;"
+                mySqlCommandTimeout = "0"
+                mySqlDatabaseName = "#{Project.Database.Name}"
+                mySqlPassword = "#{Octopus.Action[Get database password].Output.SA_PASSWORD}"
+                mySqlServerName = "#{MySQL.Server.Name}"
+                mySqlServerPort = "#{MySQL.Server.Port}"
+                mySqlTrustSSL = "False"
+                mySqlUsername = "#{MySQL.Database.Admin.Username}"
+                Octopus.Action.Template.Id = "ActionTemplates-7861"
+                Octopus.Action.Template.Version = "4"
+            }
+            worker_pool = "database-worker-pool"
         }
     }
 }
