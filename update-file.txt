@@ -1,3 +1,4 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Reverse-engineered gravity and took full credit
-Yelled at the dark arts at 4:59pm on a Friday
+[OC-2] Blamed undefined and called it a feature
+Negotiated with gravity with zero tests
+[OC-1] Politely asked the compiler with zero tests
