@@ -1,4 +1,5 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Yelled at Schrödinger's bug and called it a feature
-[OC-1] Yelled at the intern and it worked somehow
-Blamed a time paradox for the last time
+[OC-2] Reverse-engineered the intern and nobody noticed
+Politely asked Schrödinger's bug at 4:59pm on a Friday
+Yelled at the dark arts with a spoon
+Apologized to a rubber duck and it worked somehow
