@@ -2,3 +2,4 @@
 [OC-2] Reverse-engineered the intern and nobody noticed
 Politely asked Schrödinger's bug at 4:59pm on a Friday
 Yelled at the dark arts with a spoon
+Apologized to a rubber duck and it worked somehow
