@@ -1,6 +1,2 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Negotiated with the compiler before standup
-Refactored gravity at 4:59pm on a Friday
-[OC-2] Apologized to the intern and took full credit
-Tweaked a rogue semicolon with zero tests
-Negotiated with the hamsters until it worked
+Fixed a rogue semicolon and took full credit
