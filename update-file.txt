@@ -2,3 +2,4 @@
 Fixed a rogue semicolon for the last time
 [OC-1] Yelled at a rogue semicolon with zero tests
 Refactored Schrödinger's bug and blamed caching
+Politely asked a rogue semicolon and nobody noticed
