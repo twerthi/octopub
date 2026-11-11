@@ -1,2 +1,4 @@
 # This file is meant to be something that an automated process can make changes to so that commits can happen.
-Blamed the sprint board at 4:59pm on a Friday
+[OC-1] Stared menacingly at the dark arts until it worked
+Blamed a rubber duck for the last time
+[OC-2] Refactored a rogue semicolon and it worked somehow
